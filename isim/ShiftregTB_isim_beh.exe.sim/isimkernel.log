@@ -1,0 +1,10 @@
+Command line:
+   ShiftregTB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  55786
+
+Tue Jun 07 19:49:53 2016
+
+
+ Elaboration Time: 0.03125 sec
