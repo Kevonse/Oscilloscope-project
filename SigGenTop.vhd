@@ -1,85 +1,98 @@
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 -- Company: 
--- Engineer:
---
--- Create Date:    16:17:22 01/05/09
--- Design Name:    
--- Module Name:    SigGenTop - Behavioral
--- Project Name:   
--- Target Device:  
--- Tool versions:  
--- Description:
---
--- Dependencies:
+-- Engineer: 
 -- 
--- Revision:
+-- Create Date:    14:02:25 06/08/2016 
+-- Design Name: 
+-- Module Name:    SigGenTop - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
 -- Revision 0.01 - File Created
--- Additional Comments:
--- 
---------------------------------------------------------------------------------
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
----- Uncomment the following library declaration if instantiating
----- any Xilinx primitives in this code.
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
 entity SigGenTop is
-  Port ( BTN3   : in std_logic;	
-         Clk    : in std_logic;
-         BTN0   : in std_logic;
-         BTN1   : in std_logic;
-         BTN2   : in std_logic;
-         SW     : in std_logic_vector(7 downto 0);
-			An     : out std_logic_vector(3 downto 0);
-			Cat    : out std_logic_vector(7 downto 0);
-			LD		 : out std_logic;
-         PWMOut : inout std_logic);
+    Port ( Reset : in  STD_LOGIC;
+           Mclk : in  STD_LOGIC;
+           SCK : in  STD_LOGIC;
+           SS : in  STD_LOGIC;
+           MOSI : in  STD_LOGIC;
+           PWMOut : out  STD_LOGIC;
+			  LED : out STD_LOGIC_VECTOR (7 downto 0);
+           MISO : out  STD_LOGIC);
 end SigGenTop;
 
 architecture Behavioral of SigGenTop is
 
-signal Mclk, DispClk, SigEn: std_logic;
-signal Disp: std_logic_vector(19 downto 0); 
-signal Ampl, Freq: std_logic_vector(7 downto 0);
-signal Shape: std_logic_vector(1 downto 0);
-signal divcnt: std_logic_vector(1 downto 0); 
+component SigGenControl is
+    Port ( Reset : in  STD_LOGIC;
+           Mclk : in  STD_LOGIC;
+           SCK : in  STD_LOGIC;
+           MOSI : in  STD_LOGIC;
+           SS : in  STD_LOGIC;
+			  Shape : out  STD_LOGIC_VECTOR (1 downto 0);
+           Ampl : out  STD_LOGIC_VECTOR (7 downto 0);
+           Freq : out  STD_LOGIC_VECTOR (7 downto 0);
+			  LED : out STD_LOGIC_VECTOR (7 downto 0);
+           SigEn : out  STD_LOGIC;
+           MISO : out  STD_LOGIC);
+end component;
+
+component SigGenDatapath is
+  generic( PWMinc : std_logic_vector(6 downto 0) := "0010000" );
+  Port ( Reset  : in std_logic;	
+         Clk    : in std_logic;
+         SigEn  : in std_logic;
+         Shape  : in std_logic_vector(1 downto 0);
+         Ampl   : in std_logic_vector(7 downto 0);
+         Freq   : in std_logic_vector(7 downto 0);
+         PWMOut : out std_logic);
+end component;
+
+--Common signals
+signal Ampl_conn, Freq_conn : std_logic_vector(7 downto 0);
+signal SigEn_conn : std_logic;
+signal Shape_conn : std_logic_vector(1 downto 0);
 
 begin
 
---U0: entity WORK.DivClk 
---    port map(Reset => BTN3, Clk => Clk, TimeP => 4, Clk1 => Mclk);
-	 
-	 process(BTN3, Clk)
-	 begin
-		if BTN3 = '1' then
-			divcnt <= "00";
-		elsif Clk'event and Clk = '1' then
-			divcnt <= divcnt + 1;
-		end if;
-	end process;
-	
-	Mclk <= divcnt(1);
-			
+U1 : SigGenControl Port map(Reset => Reset,
+									 Mclk => Mclk,
+									 SCK => SCK,
+									 MOSI => MOSI,
+									 SS => SS,
+									 Shape => Shape_conn,
+									 Ampl => Ampl_conn,
+									 Freq => Freq_conn,
+									 SigEn => SigEn_conn,
+									 LED => LED,
+									 MISO => MISO);
 
-U4: entity WORK.DivClk 
-    port map(Reset => BTN3, Clk => Clk, TimeP => 50e3, Clk1 => DispClk);
-
-U1: entity WORK.SigGenControl 
-    port map(Reset => BTN3, Clk => Mclk, BTN0 => BTN0, BTN1 => BTN1, BTN2 => BTN2, SW => SW, 
-	 Disp => Disp, Shape => Shape, Ampl => Ampl, Freq => Freq, SigEN=> SigEN);
-
-
-U2: entity WORK.SigGenDataPath generic map (PWMinc => "0000001") 
-    port map(Reset => BTN3, Clk => Mclk, Shape => Shape, Ampl => Ampl, Freq => Freq, SigEN=> SigEN, PWMOut => PWMOut);
-
-U3: entity WORK.SevenSeg5 
-    port map(Reset => BTN3, Clk => DispClk, Data => Disp, An => An, Cat => Cat);  
-
-U5: LD <= PWMOut;
-
+U3 : SigGenDatapath port map(Reset => Reset,
+									  Clk => Mclk,
+									  Shape => Shape_conn,
+									  Ampl => Ampl_conn,
+									  Freq => Freq_conn, 
+									  PWMOut => PWMOut, 
+									  SigEn => SigEn_conn);
 
 end Behavioral;
+

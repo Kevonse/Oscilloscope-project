@@ -102,6 +102,7 @@ static void work_a_1879823819_2372691052_p_1(char *t0)
     char *t5;
     char *t6;
     int64 t7;
+    int64 t8;
 
 LAB0:    t1 = (t0 + 3360U);
     t2 = *((char **)t1);
@@ -176,8 +177,9 @@ LAB8:    xsi_set_current_line(98, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB14:    *((char **)t1) = &&LAB15;
     goto LAB1;
@@ -198,8 +200,9 @@ LAB12:    xsi_set_current_line(102, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB18:    *((char **)t1) = &&LAB19;
     goto LAB1;
@@ -220,8 +223,9 @@ LAB16:    xsi_set_current_line(104, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB22:    *((char **)t1) = &&LAB23;
     goto LAB1;
@@ -242,8 +246,9 @@ LAB20:    xsi_set_current_line(106, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB26:    *((char **)t1) = &&LAB27;
     goto LAB1;
@@ -264,8 +269,9 @@ LAB24:    xsi_set_current_line(108, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB30:    *((char **)t1) = &&LAB31;
     goto LAB1;
@@ -286,8 +292,9 @@ LAB28:    xsi_set_current_line(110, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB34:    *((char **)t1) = &&LAB35;
     goto LAB1;
@@ -324,8 +331,9 @@ LAB32:    xsi_set_current_line(112, ng0);
     t2 = (t0 + 2128U);
     t3 = *((char **)t2);
     t7 = *((int64 *)t3);
+    t8 = (t7 * 4);
     t2 = (t0 + 3168);
-    xsi_process_wait(t2, t7);
+    xsi_process_wait(t2, t8);
 
 LAB38:    *((char **)t1) = &&LAB39;
     goto LAB1;

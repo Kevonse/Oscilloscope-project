@@ -1,0 +1,6 @@
+vhdl isim_temp "SPIPHandler.vhd"
+vhdl isim_temp "shiftreg.vhd"
+vhdl isim_temp "SigGenDatapath.vhd"
+vhdl isim_temp "SigGenControl.vhd"
+vhdl isim_temp "SigGenTop.vhd"
+vhdl isim_temp "SigGenTopTB.vhd"

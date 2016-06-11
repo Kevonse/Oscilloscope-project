@@ -1,0 +1,5 @@
+vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SPIPHandler.vhd"
+vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\shiftreg.vhd"
+vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SigGenDatapath.vhd"
+vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SigGenControl.vhd"
+vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SigGenTop.vhd"

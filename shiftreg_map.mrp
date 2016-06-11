@@ -1,0 +1,39 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Mapping Report File for Design 'shiftreg'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc3s200-ft256-4 -cm area -ir off -pr off
+-c 100 -o shiftreg_map.ncd shiftreg.ngd shiftreg.pcf 
+Target Device  : xc3s200
+Target Package : ft256
+Target Speed   : -4
+Mapper Version : spartan3 -- $Revision: 1.55 $
+Mapped Date    : Wed Jun 08 09:30:38 2016
+
+Design Summary
+--------------
+Number of errors   :   3
+Number of warnings :   0
+
+Section 1 - Errors
+------------------
+ERROR:MapLib:30 - LOC constraint M5 on LED<0> is invalid: No such site on the
+   device. To bypass this error set the environment variable 'XIL_MAP_LOCWARN'.
+ERROR:MapLib:30 - LOC constraint N4 on LED<5> is invalid: No such site on the
+   device. To bypass this error set the environment variable 'XIL_MAP_LOCWARN'.
+ERROR:MapLib:30 - LOC constraint P4 on LED<6> is invalid: No such site on the
+   device. To bypass this error set the environment variable 'XIL_MAP_LOCWARN'.
+
+Section 2 - Warnings
+--------------------
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+
+Section 5 - Removed Logic
+-------------------------

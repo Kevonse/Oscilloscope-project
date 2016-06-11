@@ -16,6 +16,11 @@
 -- Revision 0.01 - File Created
 -- Additional Comments:
 -- 
+-- Revision June 2016:
+-- Module now works with a 50 MHz input clock
+-- Setting freq to 0x01 yields an output frequency of 24 Hz
+-- Setting freq to 0xff yields an output frequency of 23 kHz
+-- The PWM frequency is ~391 kHz
 --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -35,7 +40,8 @@ end SigGenDatapath;
 
 architecture Behavioral of SigGenDatapath is
 
-signal SigCnt, nSigCnt, FreqCnt: std_logic_vector(11 downto 0);
+signal SigCnt, FreqCnt: std_logic_vector(11 downto 0);
+signal SigCnt_int, nSigCnt_int : std_logic_vector(14 downto 0);
 signal Sig, SigSquare, SigSaw : std_logic_vector(7 downto 0); --, SigSinus
 signal SigAmpl: std_logic_vector(6 downto 0); 
 signal PWMcnt: std_logic_vector(6 downto 0) := "0000000";
@@ -45,15 +51,20 @@ begin
 
 FreqDec: FreqCnt <= "00" & Freq(7 downto 6) & Freq(5 downto 4) & '0' & Freq(3 downto 2) & '0' & Freq(1 downto 0);
 
-FreqAdd: nSigCnt <= SigCnt + FreqCnt;
+--FreqAdd: nSigCnt <= SigCnt + FreqCnt;
+FreqAdd : nSigCnt_int <= SigCnt_int + FreqCnt;
 
+SigCnt <= SigCnt_int(14 downto 3);
 
 SigReg: process (Reset, Clk)
 begin
-  if Reset = '1' then SigCnt <= X"000";
+  if Reset = '1' then 
+	--SigCnt <= X"000";
+	SigCnt_int <= (others => '0');
   elsif Clk'event and Clk = '1' then
     if PWMwrap = '1' then
-      SigCnt <= nSigCnt;
+      --SigCnt <= nSigCnt;
+		SigCnt_int <= nSigCnt_int;
     end if;
   end if;
 end process;
