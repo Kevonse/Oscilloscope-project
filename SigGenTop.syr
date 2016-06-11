@@ -109,8 +109,7 @@ Architecture behavioral of Entity shiftreg is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" in Library work.
 Architecture behavioral of Entity spihandler is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" in Library work.
-Entity <siggencontrol> compiled.
-Entity <siggencontrol> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity siggencontrol is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" in Library work.
 Architecture behavioral of Entity siggendatapath is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" in Library work.
@@ -536,11 +535,11 @@ Offset:              44.716ns (Levels of Logic = 39)
 
 
 Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.80 secs
+Total CPU time to Xst completion: 5.72 secs
  
 --> 
 
-Total memory usage is 311024 kilobytes
+Total memory usage is 311040 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
