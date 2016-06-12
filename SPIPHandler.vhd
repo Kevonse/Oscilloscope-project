@@ -50,7 +50,7 @@ signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --
 signal ShapeVal : Std_logic_vector(1 downto 0); --shape value
 signal SSsample : std_logic_vector(1 downto 0); --Sample of SS signal
 signal ByteTransfCompl : std_logic; --Signal indicating if byte has been transferred. Must be so if SS has gone high again.
-type StateType is ( AdrS, DataS, CheckSumEvalS, SyncS, ShapeS, AmplS, FreqS, SigEnS);--States indicating current byte to be received
+type StateType is ( AdrS, DataS, CheckSumEvalS, SyncS, ShapeS, AmplS, FreqS);--States indicating current byte to be received
 signal State, nState: StateType; --Current state and next state
 
 
@@ -77,7 +77,7 @@ begin
   if Reset = '1' then ByteIn <= x"00"; --reset signal holding incoming byte
   elsif Mclk'event and Mclk = '1' then
       ByteIn <= DataIn; --Signal holding transmitted byte is set.
-		LED <= DataIn; --Set LED's based in byte held by ByteIn signal. Used for testing transmission
+		LED <= ByteIn; --Set LED's based in byte held by ByteIn signal. Used for testing transmission
     end if;
 end process;
 
@@ -159,14 +159,16 @@ begin
 	if Reset = '1' then 
 		ChecksumCalc <= x"00"; --calculated byte
 		Package_Ok <= '0';
+		SigEn <= '0';
 	elsif Mclk'event and Mclk = '1' then
 		ChecksumCalc <= SyncVal xor AdrVal xor ByteIn; --Checksum is calculated based on 3 earlier bytes in package
 		
 		if ChecksumVal = ChecksumCalc then --If checksum sent and checksum calculated matches
 			Package_Ok <= '1'; --Raise OK signal
-			SigEn <= '1';
+			SigEn <= '1'; --Checksums matched. Enable signal
 		else
 			Package_Ok <= '0'; --Checksums did not match
+			SigEn <= '0';
 		end if;
   end if;
 end process;
@@ -222,8 +224,6 @@ begin
 						nState <= AmplS;
 					elsif AdrVal = X"02" then
 						nState <= FreqS;
-					elsif AdrVal = X"03" then
-						nState <= SigEnS;
 					else
 						nState <= CheckSumEvalS; --Next expected byte is the checksum
 					end if;
@@ -238,9 +238,6 @@ begin
 					nState <= CheckSumEvalS; --Next expected byte is the checksum
 				when FreqS =>
 					FreqEn <= '1';
-					nState <= CheckSumEvalS; --Next expected byte is the checksum
-				when SigEnS =>
-					SigEn <= '1';
 					nState <= CheckSumEvalS; --Next expected byte is the checksum
 				when others => --If none of the states applied
 					nState <= SyncS; --Set state to expect new package

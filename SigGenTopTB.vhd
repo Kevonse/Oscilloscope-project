@@ -2,10 +2,10 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   10:40:18 06/09/2016
+-- Create Date:   21:01:07 06/12/2016
 -- Design Name:   
--- Module Name:   D:/skole/DTU/2. semester/digitalteknik/SigGenTop/SigGenTopTB.vhd
--- Project Name:  SigGenTop
+-- Module Name:   C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd
+-- Project Name:  Oscilloskop_projekt
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
@@ -47,6 +47,7 @@ ARCHITECTURE behavior OF SigGenTopTB IS
          SS : IN  std_logic;
          MOSI : IN  std_logic;
          PWMOut : OUT  std_logic;
+         LED : OUT  std_logic_vector(7 downto 0);
          MISO : OUT  std_logic
         );
     END COMPONENT;
@@ -61,6 +62,7 @@ ARCHITECTURE behavior OF SigGenTopTB IS
 
  	--Outputs
    signal PWMOut : std_logic;
+   signal LED : std_logic_vector(7 downto 0);
    signal MISO : std_logic;
 
    -- Clock period definitions
@@ -76,6 +78,7 @@ BEGIN
           SS => SS,
           MOSI => MOSI,
           PWMOut => PWMOut,
+          LED => LED,
           MISO => MISO
         );
 
@@ -92,47 +95,171 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
-      Reset <= '1';
-		wait for 10 ns;	
+      -- hold reset state for 10 ns.
+		Reset <= '1'; --Reset all signals first
+      wait for 10 ns;
 		Reset <= '0';
-      wait for Mclk_period;
-		SS <='1';
+		SCK <= '0'; --Signal is 0.
+		SS <= '1'; --When signal is high no transmission occurs
+
+      wait for Mclk_period*5;
+
+      -- Transmit 1st byte. Sync byte. 0b10101010
+		SS <= '0'; --Start transmission
+		MOSI <= '1'; --1st bit is high
+		SCK <= '1'; --SPI clock goes high. Bit 1 is read
+		wait for Mclk_period*3;--Mclk is 3.125 times faster than SCK
 		SCK <= '0';
 		MOSI <= '0';
-		wait for Mclk_period;
-		SS <='0';
-		SCK <= '1';
-		MOSI <= '1';
-		wait for Mclk_period;
-		SS <='0';
-		SCK <= '0';
-		MOSI <= '1';
-		wait for Mclk_period;
-		SS <='0';
-		SCK <= '1';
-		MOSI <= '0';
-		wait for Mclk_period;
-		SS <='0';
-		SCK <= '0';
-		MOSI <= '0';
-		wait for Mclk_period;
-		SS <='0';
-		SCK <= '1';
-		MOSI <= '1';
-		wait for Mclk_period;
-		SS <='1';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 2 is read
+		wait for Mclk_period*3;
 		SCK <= '0';
 		MOSI <= '1';
-		      wait for Mclk_period;
-		SS <='1';
-		SCK <= '1';
-		MOSI <= '0';
-		      wait for Mclk_period;
-		SS <='0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 3 is read
+		wait for Mclk_period*3;
 		SCK <= '0';
 		MOSI <= '0';
-      -- insert stimulus here 
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 4 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		MOSI <= '1';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 5 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		MOSI <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 6 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		MOSI <= '1';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 7 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		MOSI <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 8 is read
+		wait for Mclk_period*3;
+		SS <= '1'; --Stop transmission
+		SCK <= '0';
+		
+		wait for Mclk_period*5; --Wait between byte transmits
+		
+		-- Transmit 2nd byte. Adr byte.
+		SS <= '0'; --Start transmission
+		MOSI <= '1'; --1st bit is high
+		SCK <= '1'; --SPI clock goes high. Bit 1 is read
+		wait for Mclk_period*3;--Mclk is 3.125 times faster than SCK
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 2 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 3 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 4 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 5 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 6 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 7 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 8 is read
+		wait for Mclk_period*3;
+		SS <= '1'; --Stop transmission
+		SCK <= '0';
+		
+		wait for Mclk_period*5; --Wait between byte transmits
+		
+		-- Transmit 3rd byte. Data byte (Shape, Amplitude, Frequency).
+		SS <= '0'; --Start transmission
+		MOSI <= '1'; --1st bit is high
+		SCK <= '1'; --SPI clock goes high. Bit 1 is read
+		wait for Mclk_period*3;--Mclk is 3.125 times faster than SCK
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 2 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 3 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 4 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 5 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 6 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 7 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 8 is read
+		wait for Mclk_period*3;
+		SS <= '1'; --Stop transmission
+		SCK <= '0';
+		
+		wait for Mclk_period*5; --Wait between byte transmits
+		
+		-- Transmit 4th byte. Checksum byte.
+		SS <= '0'; --Start transmission
+		MOSI <= '1'; --1st bit is high
+		SCK <= '1'; --SPI clock goes high. Bit 1 is read
+		wait for Mclk_period*3;--Mclk is 3.125 times faster than SCK
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 2 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 3 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 4 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 5 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 6 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 7 is read
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1'; --Bit 8 is read
+		wait for Mclk_period*3;
+		SS <= '1'; --Stop transmission
+		SCK <= '0';
 
       wait;
    end process;
