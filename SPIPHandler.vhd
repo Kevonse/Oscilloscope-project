@@ -48,28 +48,36 @@ signal ChecksumCalc : STD_LOGIC_VECTOR(7 downto 0); --the calculated value of ch
 signal Package_Ok : STD_LOGIC; --signal indicating if checksum values matched
 signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --Signals for which register to load data into
 signal ShapeVal : Std_logic_vector(1 downto 0); --shape value
---signal SSsample : std_logic_vector(1 downto 0); --Sample of SCK
+signal SSsample : std_logic_vector(1 downto 0); --Sample of SS signal
+signal ByteTransfCompl : std_logic; --Signal indicating if byte has been transferred. Must be so if SS has gone high again.
 type StateType is ( AdrS, DataS, CheckSumEvalS, SyncS, ShapeS, AmplS, FreqS, SigEnS);--States indicating current byte to be received
 signal State, nState: StateType; --Current state and next state
 
 
 begin
 
---SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
---begin
---	if reset = '1' then 
---		SSsample <= "00";
---	elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
---		SSsample <= SSsample(0) & SS ; --Left shift signal value
---	end if;
---end process;
+SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
+begin
+	if reset = '1' then 
+		SSsample <= "00";
+		ByteTransfCompl <= '0';
+	elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
+		SSsample <= SSsample(0) & SS ; --Left shift signal value
+		if SSsample = "01" then --if SS has gone high (8 bits transferred).
+		ByteTransfCompl <= '1';
+		elsif SSsample = "10" then
+		ByteTransfCompl <= '0';
+		end if;
+	end if;
+	
+end process;
 
 DataInReg: process (Reset, Mclk) --Register has byte transferred into shiftreg from SPI transmission
 begin
   if Reset = '1' then ByteIn <= x"00"; --reset signal holding incoming byte
   elsif Mclk'event and Mclk = '1' then
       ByteIn <= DataIn; --Signal holding transmitted byte is set.
-		--LED <= DataIn; --Set LED's based in byte held by ByteIn signal. Used for testing transmission
+		LED <= DataIn; --Set LED's based in byte held by ByteIn signal. Used for testing transmission
     end if;
 end process;
 
@@ -167,14 +175,15 @@ end process;
 
 StateReg: process (Reset, Mclk)--Register hold current state
 begin
-  if Reset = '1' then State <= SyncS; --Sync state is state when first byte expected is the sync byte
-  elsif Mclk'event and Mclk = '1' then
-    State <= nState; --Moving on to next state
+	if Reset = '1' then 
+		State <= SyncS; --Sync state is state when first byte expected is the sync byte
+	elsif Mclk'event and Mclk = '1' then
+		State <= nState; --Moving on to next state
   end if;
 end process;
 
 
-StateDec: process (Reset, State, DataIn, AdrVal)--, SSsample,,state,SS,DataIn,Adr,CheckSumTmp)--statemachine
+StateDec: process (Reset, State, DataIn, AdrVal, SSsample, ByteTransfCompl)--, SSsample,,state,SS,DataIn,Adr,CheckSumTmp)--statemachine
 begin
 	--Reset load signals
 	SyncEn <= '0';
@@ -184,6 +193,7 @@ begin
 	FreqEn <= '0';
 	ChecksumEn <= '0';
 	AdrEn <= '0';
+	nState <= SyncS; --Trying to get rid of 8-bit latch
 	
 	if Reset = '1' then --Output is zero if reset signal is set to high	
 		--Reset load signals
@@ -196,44 +206,46 @@ begin
 		AdrEn <= '0';
 		nState <= SyncS;
 	else
-		case state is
-			when SyncS => --Sync state
-				SyncEn <= '1'; --Load data into SyncReg
-				nState <= AdrS; --next expected byte is the address byte
-			when AdrS => --State is AdrS
-				AdrEn <= '1';
-				nState <= DataS; --Next expected byte is Data (Shape, Amplitude, Frequency)
-			when DataS => --Expected byte is data (Shape, Amplitude, Frequency)
-				DataEn <= '1'; --load current byte into DataReg
-				if AdrVal = X"00" then
-					nState <= ShapeS;
-				elsif AdrVal = X"01" then
-					nState <= AmplS;
-				elsif AdrVal = X"02" then
-					nState <= FreqS;
-				elsif AdrVal = X"03" then
-					nState <= SigEnS;
-				else
+		if ByteTransfCompl = '1' then --If byte has been transferred run statemachine
+			case state is
+				when SyncS => --Sync state
+					SyncEn <= '1'; --Load data into SyncReg
+					nState <= AdrS; --next expected byte is the address byte
+				when AdrS => --State is AdrS
+					AdrEn <= '1';
+					nState <= DataS; --Next expected byte is Data (Shape, Amplitude, Frequency)
+				when DataS => --Expected byte is data (Shape, Amplitude, Frequency)
+					DataEn <= '1'; --load current byte into DataReg
+					if AdrVal = X"00" then
+						nState <= ShapeS;
+					elsif AdrVal = X"01" then
+						nState <= AmplS;
+					elsif AdrVal = X"02" then
+						nState <= FreqS;
+					elsif AdrVal = X"03" then
+						nState <= SigEnS;
+					else
+						nState <= CheckSumEvalS; --Next expected byte is the checksum
+					end if;
+				when CheckSumEvalS => --Expected byte is the checksum
+					ChecksumEn <= '1'; --load current byte into checksumReg
+					nState <= SyncS; --Expect new package
+				when Shapes =>
+					ShapeEn <= '1';
 					nState <= CheckSumEvalS; --Next expected byte is the checksum
-				end if;
-			when CheckSumEvalS => --Expected byte is the checksum
-				ChecksumEn <= '1'; --load current byte into checksumReg
-				nState <= SyncS; --Expect new package
-			when Shapes =>
-				ShapeEn <= '1';
-				nState <= CheckSumEvalS; --Next expected byte is the checksum
-			when AmplS =>
-				AmplEn <= '1';
-				nState <= CheckSumEvalS; --Next expected byte is the checksum
-			when FreqS =>
-				FreqEn <= '1';
-				nState <= CheckSumEvalS; --Next expected byte is the checksum
-			when SigEnS =>
-				SigEn <= '1';
-				nState <= CheckSumEvalS; --Next expected byte is the checksum
-			when others => --If none of the states applied
-				nState <= SyncS; --Set state to expect new package
-		end case;
+				when AmplS =>
+					AmplEn <= '1';
+					nState <= CheckSumEvalS; --Next expected byte is the checksum
+				when FreqS =>
+					FreqEn <= '1';
+					nState <= CheckSumEvalS; --Next expected byte is the checksum
+				when SigEnS =>
+					SigEn <= '1';
+					nState <= CheckSumEvalS; --Next expected byte is the checksum
+				when others => --If none of the states applied
+					nState <= SyncS; --Set state to expect new package
+			end case;
+		end if;
 	end if;
 end process;
 		

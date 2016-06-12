@@ -9,7 +9,7 @@ Target Device  : xc3s200
 Target Package : ft256
 Target Speed   : -4
 Mapper Version : spartan3 -- $Revision: 1.55 $
-Mapped Date    : Sat Jun 11 23:35:16 2016
+Mapped Date    : Sun Jun 12 20:50:02 2016
 
 Mapping design into LUTs...
 ERROR:MapLib:30 - LOC constraint M5 on LED<0> is invalid: No such site on the

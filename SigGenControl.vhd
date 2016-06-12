@@ -51,7 +51,7 @@ component shiftreg is
 			  SS: in std_logic;
 			  Mclk: in std_logic;
            MOSI : in  STD_LOGIC;
-           LED : out  STD_LOGIC_vector(7 downto 0));
+           SPIdat : out  STD_LOGIC_vector(7 downto 0));
 end component;
 
 component SPIHandler is
@@ -75,7 +75,7 @@ U2 : shiftreg port map(Reset => Reset,
 							  Mclk => Mclk,
 							  SS => SS, 
 							  MOSI => MOSI,
-							  LED => SregIn);
+							  SPIdat => SregIn);
 
 U4 : SPIHandler port map(Reset => Reset,
 								 DataIn => SregIn, 

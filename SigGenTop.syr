@@ -107,7 +107,8 @@ Slice Utilization Ratio Delta      : 5
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" in Library work.
 Architecture behavioral of Entity shiftreg is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" in Library work.
-Architecture behavioral of Entity spihandler is up to date.
+Entity <spihandler> compiled.
+Entity <spihandler> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" in Library work.
 Architecture behavioral of Entity siggencontrol is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" in Library work.
@@ -192,14 +193,12 @@ Unit <shiftreg> synthesized.
 
 Synthesizing Unit <SPIHandler>.
     Related source file is "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd".
-WARNING:Xst:647 - Input <SS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1305 - Output <LED> is never assigned. Tied to value 00000000.
 WARNING:Xst:646 - Signal <Package_Ok> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_0> for signal <State>.
     -----------------------------------------------------------------------
     | States             | 8                                              |
-    | Transitions        | 12                                             |
-    | Inputs             | 4                                              |
+    | Transitions        | 19                                             |
+    | Inputs             | 5                                              |
     | Outputs            | 5                                              |
     | Clock              | Mclk                      (rising_edge)        |
     | Reset              | Reset                     (positive)           |
@@ -212,15 +211,20 @@ WARNING:Xst:646 - Signal <Package_Ok> is assigned but never used. This unconnect
     Found 8-bit register for signal <Freq>.
     Found 2-bit register for signal <Shape>.
     Found 8-bit register for signal <Ampl>.
+    Found 8-bit register for signal <LED>.
     Found 8-bit register for signal <AdrVal>.
     Found 8-bit register for signal <AmplVal>.
     Found 8-bit register for signal <ByteIn>.
+    Found 1-bit register for signal <ByteTransfCompl>.
+    Found 1-bit 4-to-1 multiplexer for signal <ByteTransfCompl$mux0000>.
     Found 8-bit register for signal <Data>.
     Found 8-bit register for signal <FreqVal>.
     Found 2-bit register for signal <ShapeVal>.
+    Found 2-bit register for signal <SSsample>.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred  60 D-type flip-flop(s).
+	inferred  71 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
 Unit <SPIHandler> synthesized.
 
 
@@ -244,13 +248,16 @@ Macro Statistics
  8-bit adder                                           : 1
 # Accumulators                                         : 1
  15-bit up accumulator                                 : 1
-# Registers                                            : 12
- 2-bit register                                        : 3
- 8-bit register                                        : 9
+# Registers                                            : 15
+ 1-bit register                                        : 1
+ 2-bit register                                        : 4
+ 8-bit register                                        : 10
 # Comparators                                          : 3
  12-bit comparator less                                : 1
  7-bit comparator lessequal                            : 1
  8-bit comparator greater                              : 1
+# Multiplexers                                         : 1
+ 1-bit 4-to-1 multiplexer                              : 1
 
 =========================================================================
 
@@ -259,18 +266,18 @@ Macro Statistics
 =========================================================================
 
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <U1/U4/State/FSM> on signal <State[1:8]> with one-hot encoding.
+Optimizing FSM <U1/U4/State/FSM> on signal <State[1:3]> with user encoding.
 ---------------------------
  State         | Encoding
 ---------------------------
- adrs          | 00000001
- datas         | 00000100
- checksumevals | 10000000
- syncs         | 00000010
- shapes        | 00001000
- ampls         | 00010000
- freqs         | 00100000
- sigens        | 01000000
+ adrs          | 000
+ datas         | 001
+ checksumevals | 010
+ syncs         | 011
+ shapes        | 100
+ ampls         | 101
+ freqs         | 110
+ sigens        | 111
 ---------------------------
 
 =========================================================================
@@ -283,8 +290,8 @@ Macro Statistics
  8-bit adder                                           : 1
 # Accumulators                                         : 1
  15-bit up accumulator                                 : 1
-# Registers                                            : 78
- Flip-Flops                                            : 78
+# Registers                                            : 89
+ Flip-Flops                                            : 89
 # Comparators                                          : 3
  12-bit comparator less                                : 1
  7-bit comparator lessequal                            : 1
@@ -310,7 +317,7 @@ Optimizing unit <SPIHandler> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block SigGenTop, actual ratio is 4.
+Found area constraint ratio of 100 (+ 5) on block SigGenTop, actual ratio is 5.
 
 Final Macro Processing ...
 
@@ -318,8 +325,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 97
- Flip-Flops                                            : 97
+# Registers                                            : 103
+ Flip-Flops                                            : 103
 
 =========================================================================
 
@@ -348,24 +355,26 @@ Design Statistics
 # IOs                              : 15
 
 Cell Usage :
-# BELS                             : 314
+# BELS                             : 318
 #      GND                         : 1
-#      INV                         : 4
+#      INV                         : 5
 #      LUT1                        : 7
-#      LUT2                        : 32
-#      LUT2_L                      : 1
+#      LUT2                        : 29
 #      LUT3                        : 57
-#      LUT4                        : 56
-#      LUT4_D                      : 1
+#      LUT3_D                      : 1
+#      LUT3_L                      : 1
+#      LUT4                        : 59
+#      LUT4_D                      : 2
+#      LUT4_L                      : 1
 #      MULT_AND                    : 9
 #      MUXCY                       : 76
 #      VCC                         : 1
 #      XORCY                       : 69
-# FlipFlops/Latches                : 97
-#      FDC                         : 21
+# FlipFlops/Latches                : 103
+#      FDC                         : 18
 #      FDCE                        : 57
-#      FDE                         : 18
-#      FDP                         : 1
+#      FDE                         : 26
+#      FDP                         : 2
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 14
@@ -378,9 +387,9 @@ Device utilization summary:
 
 Selected Device : 3s200ft256-4 
 
- Number of Slices:                       93  out of   1920     4%  
- Number of Slice Flip Flops:             97  out of   3840     2%  
- Number of 4 input LUTs:                158  out of   3840     4%  
+ Number of Slices:                       99  out of   1920     5%  
+ Number of Slice Flip Flops:            103  out of   3840     2%  
+ Number of 4 input LUTs:                162  out of   3840     4%  
  Number of IOs:                          15
  Number of bonded IOBs:                  15  out of    173     8%  
  Number of GCLKs:                         1  out of      8    12%  
@@ -406,7 +415,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-Mclk                               | BUFGP                  | 97    |
+Mclk                               | BUFGP                  | 103   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -414,15 +423,15 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-Reset                              | IBUF                   | 79    |
+Reset                              | IBUF                   | 77    |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 5.594ns (Maximum Frequency: 178.763MHz)
-   Minimum input arrival time before clock: 5.701ns
+   Minimum period: 5.722ns (Maximum Frequency: 174.764MHz)
+   Minimum input arrival time before clock: 7.174ns
    Maximum output required time after clock: 44.716ns
    Maximum combinational path delay: No path found
 
@@ -432,33 +441,32 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Mclk'
-  Clock period: 5.594ns (frequency: 178.763MHz)
-  Total number of paths / destination ports: 520 / 170
+  Clock period: 5.722ns (frequency: 174.764MHz)
+  Total number of paths / destination ports: 673 / 175
 -------------------------------------------------------------------------
-Delay:               5.594ns (Levels of Logic = 3)
-  Source:            U1/U4/AdrVal_5 (FF)
-  Destination:       U1/U4/State_FSM_FFd4 (FF)
+Delay:               5.722ns (Levels of Logic = 2)
+  Source:            U1/U4/State_FSM_FFd1 (FF)
+  Destination:       U1/U4/Ampl_7 (FF)
   Source Clock:      Mclk rising
   Destination Clock: Mclk rising
 
-  Data Path: U1/U4/AdrVal_5 to U1/U4/State_FSM_FFd4
+  Data Path: U1/U4/State_FSM_FFd1 to U1/U4/Ampl_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             1   0.720   1.140  U1/U4/AdrVal_5 (U1/U4/AdrVal_5)
-     LUT4:I0->O            2   0.551   0.903  U1/U4/State_FSM_FFd2-In1_SW0 (U1/U4/State_FSM_FFd1-In10)
-     LUT4_D:I3->O          3   0.551   0.975  U1/U4/State_FSM_FFd2-In1 (U1/U4/N1)
-     LUT3:I2->O            1   0.551   0.000  U1/U4/State_FSM_FFd3-In1 (U1/U4/State_FSM_FFd3-In)
-     FDC:D                     0.203          U1/U4/State_FSM_FFd3
+     FDC:C->Q              5   0.720   1.116  U1/U4/State_FSM_FFd1 (U1/U4/State_FSM_FFd1)
+     LUT3_D:I1->O          2   0.551   0.945  U1/U4/AmplEn11 (U1/U4/N1)
+     LUT3:I2->O           16   0.551   1.237  U1/U4/AmplEn1 (U1/U4/AmplEn)
+     FDCE:CE                   0.602          U1/U4/AmplVal_0
     ----------------------------------------
-    Total                      5.594ns (2.576ns logic, 3.018ns route)
-                                       (46.0% logic, 54.0% route)
+    Total                      5.722ns (2.424ns logic, 3.298ns route)
+                                       (42.4% logic, 57.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Mclk'
-  Total number of paths / destination ports: 62 / 62
+  Total number of paths / destination ports: 71 / 71
 -------------------------------------------------------------------------
-Offset:              5.701ns (Levels of Logic = 2)
+Offset:              7.174ns (Levels of Logic = 3)
   Source:            Reset (PAD)
   Destination:       U1/U4/Ampl_7 (FF)
   Destination Clock: Mclk rising
@@ -467,16 +475,17 @@ Offset:              5.701ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            84   0.821   2.490  Reset_IBUF (Reset_IBUF)
-     LUT2:I0->O           16   0.551   1.237  U1/U4/FreqEn1 (U1/U4/FreqEn)
-     FDCE:CE                   0.602          U1/U4/Freq_0
+     IBUF:I->O            80   0.821   2.467  Reset_IBUF (Reset_IBUF)
+     LUT3_D:I0->O          2   0.551   0.945  U1/U4/AmplEn11 (U1/U4/N1)
+     LUT3:I2->O           16   0.551   1.237  U1/U4/AmplEn1 (U1/U4/AmplEn)
+     FDCE:CE                   0.602          U1/U4/AmplVal_0
     ----------------------------------------
-    Total                      5.701ns (1.974ns logic, 3.727ns route)
-                                       (34.6% logic, 65.4% route)
+    Total                      7.174ns (2.525ns logic, 4.649ns route)
+                                       (35.2% logic, 64.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'Mclk'
-  Total number of paths / destination ports: 289082097 / 1
+  Total number of paths / destination ports: 289082105 / 9
 -------------------------------------------------------------------------
 Offset:              44.716ns (Levels of Logic = 39)
   Source:            U1/U4/Shape_1 (FF)
@@ -534,14 +543,14 @@ Offset:              44.716ns (Levels of Logic = 39)
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.72 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.64 secs
  
 --> 
 
 Total memory usage is 311040 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

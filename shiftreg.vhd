@@ -35,7 +35,7 @@ entity shiftreg is
 			  Mclk: in std_logic;
            MOSI : in  STD_LOGIC;
 			  SS : in std_logic;
-           LED : out  STD_LOGIC_vector(7 downto 0));
+           SPIdat : out  STD_LOGIC_vector(7 downto 0));
 end shiftreg;
 
 architecture Behavioral of shiftreg is
@@ -66,7 +66,7 @@ begin
 			end if;	
 	end process;
 	
-	LED <= shiftval; --Output is set to value of received byte
+	SPIdat <= shiftval; --Output is set to value of received byte
 	
 end Behavioral;
 
