@@ -1,2 +1,2 @@
-vhdl isim_temp "../../../../../Desktop/shiftreg.vhd"
-vhdl isim_temp "../../../../../Desktop/shiftregTB.vhd"
+vhdl isim_temp "shiftreg.vhd"
+vhdl isim_temp "shiftregTB.vhd"

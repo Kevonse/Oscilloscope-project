@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   16:27:15 06/07/2016
+-- Create Date:   10:34:18 06/13/2016
 -- Design Name:   
 -- Module Name:   C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftregTB.vhd
 -- Project Name:  Oscilloskop_projekt
@@ -46,7 +46,7 @@ ARCHITECTURE behavior OF shiftregTB IS
          Mclk : IN  std_logic;
          MOSI : IN  std_logic;
          SS : IN  std_logic;
-         LED : OUT  std_logic_vector(7 downto 0)
+         SPIdat : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
@@ -59,7 +59,7 @@ ARCHITECTURE behavior OF shiftregTB IS
    signal SS : std_logic := '0';
 
  	--Outputs
-   signal LED : std_logic_vector(7 downto 0);
+   signal SPIdat : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
    constant Mclk_period : time := 10 ns;
@@ -73,7 +73,7 @@ BEGIN
           Mclk => Mclk,
           MOSI => MOSI,
           SS => SS,
-          LED => LED
+          SPIdat => SPIdat
         );
 
    -- Clock process definitions
@@ -90,12 +90,65 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
-
-      wait for Mclk_period*10;
-
-      -- insert stimulus here 
-
+      wait for 10 ns;	
+		Reset <= '1'; --Reset all signals
+		SCK <= '0';
+		SS <= '1';
+      wait for Mclk_period*5;
+		Reset <= '0';
+		
+      -- Transfer 1 byte. Sync byte
+		
+		--1st bit
+		MOSI <= '1';
+		SS <= '0'; --Start transfer
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--2nd bit
+		MOSI <= '0';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--3rd bit
+		MOSI <= '1';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--4th bit
+		MOSI <= '0';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--5th bit
+		MOSI <= '1';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--6th bit
+		MOSI <= '0';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--7th bit
+		MOSI <= '1';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		--8th bit
+		MOSI <= '0';
+		SCK <= '1';
+		wait for Mclk_period*3;
+		SS <= '1'; --Stop transmission
+		SCK <= '0';
+		
       wait;
    end process;
 

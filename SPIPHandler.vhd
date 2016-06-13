@@ -42,7 +42,7 @@ entity SPIHandler is
 end SPIHandler;
 
 architecture Behavioral of SPIHandler is
---Data signal can be either shape, amplitude or frequency before it is analyzed based on adress.
+--Data signal can be either shape, amplitude or frequency before it is loaded to correct register based on adress.
 signal ByteIn, Data, AdrVal, AmplVal, FreqVal, SyncVal, ChecksumVal: std_logic_vector(7 downto 0);--signals holding transmitted bytes
 signal ChecksumCalc : STD_LOGIC_VECTOR(7 downto 0); --the calculated value of checksum
 signal Package_Ok : STD_LOGIC; --signal indicating if checksum values matched
@@ -50,9 +50,8 @@ signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --
 signal ShapeVal : Std_logic_vector(1 downto 0); --shape value
 signal SSsample : std_logic_vector(1 downto 0); --Sample of SS signal
 signal ByteTransfCompl : std_logic; --Signal indicating if byte has been transferred. Must be so if SS has gone high again.
-type StateType is ( AdrS, DataS, CheckSumEvalS, SyncS, ShapeS, AmplS, FreqS);--States indicating current byte to be received
+type StateType is ( AdrS, DataS, CheckSumEvalS, SyncS);--States indicating current byte to be received
 signal State, nState: StateType; --Current state and next state
-
 
 begin
 
@@ -65,8 +64,9 @@ begin
 		SSsample <= SSsample(0) & SS ; --Left shift signal value
 		if SSsample = "01" then --if SS has gone high (8 bits transferred).
 		ByteTransfCompl <= '1';
-		elsif SSsample = "10" then
-		ByteTransfCompl <= '0';
+	--	elsif SSsample = "10" then
+		else
+			ByteTransfCompl <= '0';
 		end if;
 	end if;
 	
@@ -159,16 +159,13 @@ begin
 	if Reset = '1' then 
 		ChecksumCalc <= x"00"; --calculated byte
 		Package_Ok <= '0';
-		SigEn <= '0';
 	elsif Mclk'event and Mclk = '1' then
 		ChecksumCalc <= SyncVal xor AdrVal xor ByteIn; --Checksum is calculated based on 3 earlier bytes in package
 		
 		if ChecksumVal = ChecksumCalc then --If checksum sent and checksum calculated matches
 			Package_Ok <= '1'; --Raise OK signal
-			SigEn <= '1'; --Checksums matched. Enable signal
 		else
 			Package_Ok <= '0'; --Checksums did not match
-			SigEn <= '0';
 		end if;
   end if;
 end process;
@@ -185,63 +182,68 @@ begin
 end process;
 
 
-StateDec: process (Reset, State, DataIn, AdrVal, SSsample, ByteTransfCompl)--, SSsample,,state,SS,DataIn,Adr,CheckSumTmp)--statemachine
+StateDec: process (Reset, State, ByteIn, ByteTransfCompl, AdrVal)--statemachine
 begin
 	--Reset load signals
 	SyncEn <= '0';
 	DataEn <= '0';
-	ShapeEn <= '0';
-	AmplEn <= '0';
-	FreqEn <= '0';
 	ChecksumEn <= '0';
 	AdrEn <= '0';
-	nState <= SyncS; --Trying to get rid of 8-bit latch
 	
-	if Reset = '1' then --Output is zero if reset signal is set to high	
+	if Reset = '1' then --Output is zero if reset signal is set to high
 		--Reset load signals
 		SyncEn <= '0';
 		DataEn <= '0';
-		ShapeEn <= '0';
-		AmplEn <= '0';
-		FreqEn <= '0';
 		ChecksumEn <= '0';
 		AdrEn <= '0';
 		nState <= SyncS;
 	else
-		if ByteTransfCompl = '1' then --If byte has been transferred run statemachine
+		if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
 			case state is
 				when SyncS => --Sync state
 					SyncEn <= '1'; --Load data into SyncReg
 					nState <= AdrS; --next expected byte is the address byte
 				when AdrS => --State is AdrS
-					AdrEn <= '1';
+					AdrEn <= '1'; --Load data into AdrReg
 					nState <= DataS; --Next expected byte is Data (Shape, Amplitude, Frequency)
 				when DataS => --Expected byte is data (Shape, Amplitude, Frequency)
-					DataEn <= '1'; --load current byte into DataReg
-					if AdrVal = X"00" then
-						nState <= ShapeS;
-					elsif AdrVal = X"01" then
-						nState <= AmplS;
-					elsif AdrVal = X"02" then
-						nState <= FreqS;
-					else
-						nState <= CheckSumEvalS; --Next expected byte is the checksum
-					end if;
+					DataEn <= '1'; --load data into DataReg
+					nState <= CheckSumEvalS; --Next expected byte is checksum
 				when CheckSumEvalS => --Expected byte is the checksum
-					ChecksumEn <= '1'; --load current byte into checksumReg
+					ChecksumEn <= '1'; --load data into checksumReg
 					nState <= SyncS; --Expect new package
-				when Shapes =>
-					ShapeEn <= '1';
-					nState <= CheckSumEvalS; --Next expected byte is the checksum
-				when AmplS =>
-					AmplEn <= '1';
-					nState <= CheckSumEvalS; --Next expected byte is the checksum
-				when FreqS =>
-					FreqEn <= '1';
-					nState <= CheckSumEvalS; --Next expected byte is the checksum
 				when others => --If none of the states applied
 					nState <= SyncS; --Set state to expect new package
 			end case;
+		end if;
+	end if;
+end process;
+
+AdrDec: process (Reset, Data, AdrVal, Package_Ok)--statemachine
+begin
+	ShapeEn <= '0';
+	AmplEn <= '0';
+	FreqEn <= '0';
+	SigEn <= '0';
+	
+	if Reset = '1' then
+		ShapeEn <= '0';
+		AmplEn <= '0';
+		FreqEn <= '0';
+		SigEn <= '0';
+	else
+		if Package_Ok = '1' then --Checksums matched
+			if AdrVal = X"01" then --If address indicates data is a shape value
+				ShapeEn <= '1';
+			elsif AdrVal = X"02" then --If address indicates data is an amplitude value
+				AmplEn <= '1';
+			elsif AdrVal = X"03" then --If address indicates that data is a frequency value
+				FreqEn <= '1';
+			else
+				SigEn <= '1'; --Registers have been loaded with their values
+			end if;	
+		else
+			SigEn <= '0';
 		end if;
 	end if;
 end process;

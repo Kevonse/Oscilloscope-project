@@ -1,5 +1,1 @@
-work	"SPIPHandler.vhd"
-work	"SigGenControl.vhd"
-work	"SigGenDatapath.vhd"
-work	"SigGenTop.vhd"
 work	"shiftreg.vhd"

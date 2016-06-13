@@ -1,0 +1,2 @@
+vhdl isim_temp "SPIPHandler.vhd"
+vhdl isim_temp "SPIHandlerTB.vhd"

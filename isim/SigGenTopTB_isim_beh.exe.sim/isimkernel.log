@@ -2,14 +2,14 @@ Command line:
    SigGenTopTB_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  63041
+     -socket  51462
 
-Sun Jun 12 21:42:32 2016
+Mon Jun 13 10:42:10 2016
 
 
  Elaboration Time: 0.03125 sec
 
- Current Memory Usage: 844.288 Meg
+ Current Memory Usage: 844.317 Meg
 
  Total Signals          : 88
  Total Nets             : 225
@@ -19,11 +19,11 @@ Sun Jun 12 21:42:32 2016
  Total Processes        : 29
  Total Traceable Variables  : 12
  Total Scalar Nets and Variables : 611
-Total Line Count : 277
+Total Line Count : 276
 
- Total Simulation Time: 0.21875 sec
+ Total Simulation Time: 0.0625 sec
 
- Current Memory Usage: 687.002 Meg
+ Current Memory Usage: 844.317 Meg
 
-Sun Jun 12 22:03:01 2016
+Mon Jun 13 10:42:18 2016
 

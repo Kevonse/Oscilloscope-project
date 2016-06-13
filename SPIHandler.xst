@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/xst"
+elaborate
+-ifn SPIHandler.prj
+-ifmt mixed
