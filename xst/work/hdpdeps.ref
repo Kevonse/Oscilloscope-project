@@ -37,10 +37,10 @@ EN work/SigGenTopTB 0 \
 AR work/SigGenTopTB/behavior 0 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" \
       EN work/SigGenTopTB 0 CP SigGenTop
-FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" 2016/06/13.14:51:53 P.20131013
-EN work/SPIHandler 1465822316 \
+FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" 2016/06/13.16:41:04 P.20131013
+EN work/SPIHandler 1465828866 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SPIHandler/Behavioral 1465822317 \
+AR work/SPIHandler/Behavioral 1465828867 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" \
-      EN work/SPIHandler 1465822316
+      EN work/SPIHandler 1465828866

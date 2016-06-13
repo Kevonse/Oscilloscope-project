@@ -58,7 +58,7 @@ begin
 SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
 begin
 	if reset = '1' then 
-		SSsample <= "00";
+		SSsample <= "11";
 		ByteTransfCompl <= '0';
 	elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
 		SSsample <= SSsample(0) & SS ; --Left shift signal value
@@ -160,12 +160,14 @@ begin
 		ChecksumCalc <= x"00"; --calculated byte
 		Package_Ok <= '0';
 	elsif Mclk'event and Mclk = '1' then
-		ChecksumCalc <= SyncVal xor AdrVal xor ByteIn; --Checksum is calculated based on 3 earlier bytes in package
-		
-		if ChecksumVal = ChecksumCalc then --If checksum sent and checksum calculated matches
-			Package_Ok <= '1'; --Raise OK signal
-		else
-			Package_Ok <= '0'; --Checksums did not match
+		if SyncVal = "10101010" then --Sync byte has this value in general. Used to avoid OK checksum when reset is high.
+			ChecksumCalc <= SyncVal xor AdrVal xor ByteIn; --Checksum is calculated based on 3 earlier bytes in package
+			
+			if ChecksumVal = ChecksumCalc then --If checksum sent and checksum calculated matches
+				Package_Ok <= '1'; --Raise OK signal
+			else
+				Package_Ok <= '0'; --Checksums did not match
+			end if;
 		end if;
   end if;
 end process;

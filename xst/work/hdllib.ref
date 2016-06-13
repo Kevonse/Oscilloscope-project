@@ -6,6 +6,6 @@ EN shiftreg NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Osci
 EN siggentop NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" sub00/vhpl08 1465812849
 AR shiftreg behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" sub00/vhpl01 1465812842
 AR siggentop behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" sub00/vhpl09 1465812850
-AR spihandler behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl05 1465822317
+AR spihandler behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl05 1465828867
 AR siggencontrol behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" sub00/vhpl07 1465812846
-EN spihandler NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl04 1465822316
+EN spihandler NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl04 1465828866

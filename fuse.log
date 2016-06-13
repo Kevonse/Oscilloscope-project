@@ -12,8 +12,7 @@ Compiling package std_logic_1164
 Compiling architecture behavioral of entity SPIHandler [spihandler_default]
 Compiling architecture behavior of entity spihandlertb
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
 Compiled 5 VHDL Units
 Built simulation executable C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_isim_beh.exe
-Fuse Memory Usage: 29648 KB
-Fuse CPU Usage: 437 ms
+Fuse Memory Usage: 29020 KB
+Fuse CPU Usage: 421 ms
