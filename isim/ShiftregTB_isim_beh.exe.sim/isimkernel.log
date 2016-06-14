@@ -2,14 +2,14 @@ Command line:
    shiftregTB_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  54849
+     -socket  55183
 
-Tue Jun 14 16:47:32 2016
+Tue Jun 14 20:28:04 2016
 
 
- Elaboration Time: 0.03125 sec
+ Elaboration Time: 0.015625 sec
 
- Current Memory Usage: 844.251 Meg
+ Current Memory Usage: 844.19 Meg
 
  Total Signals          : 15
  Total Nets             : 25
@@ -21,9 +21,9 @@ Tue Jun 14 16:47:32 2016
  Total Scalar Nets and Variables : 386
 Total Line Count : 75
 
- Total Simulation Time: 0.03125 sec
+ Total Simulation Time: 0.015625 sec
 
- Current Memory Usage: 372.392 Meg
+ Current Memory Usage: 686.903 Meg
 
-Tue Jun 14 17:08:50 2016
+Tue Jun 14 20:29:22 2016
 

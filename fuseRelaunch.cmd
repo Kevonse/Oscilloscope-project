@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftregTB_isim_beh.exe" -prj "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftregTB_beh.prj" "work.shiftregTB" 
+-intstyle "ise" -incremental -o "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_isim_beh.exe" -prj "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_beh.prj" "work.SPIHandlerTB" 

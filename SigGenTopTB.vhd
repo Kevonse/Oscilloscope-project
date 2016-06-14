@@ -100,8 +100,657 @@ BEGIN
       wait for 10 ns;
 		Reset <= '0';
 		
+		--3 packages need to be sent. Containing data about shape, amplitude and frequency.
+		--Each package contains 4 bytes; sync, address, data, checksum
 		
-
+---------------------------------------Package #1--------------------------------------------------
+		--Byte #1 - Sync: 10101010
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #1
+		--Byte #2 - Address: 00000001
+		MOSI <= 0; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #1
+		--Byte #3 - Data(Shape): 00000001 - Square wave
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #1
+		--Byte #4 - Checksum: 10101010
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+---------------------------------------------Package #2 -----------------------------------------------
+		--Byte #1 - Sync: 10101010
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #2
+		--Byte #2 - Address: 00000010
+		MOSI <= 0; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #2
+		--Byte #3 - Data(Amplitude): 01111111 - 1.65 V
+		MOSI <= 0; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #2
+		--Byte #4 - Checksum: 11010111
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+-----------------------------------------------Package #3--------------------------------------------
+		--Byte #1 - Sync: 10101010
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #3
+		--Byte #2 - Address: 00000011
+		MOSI <= 0; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #3
+		--Byte #3 - Data(Frequency): 01111111 - 11.5 kHz
+		MOSI <= 0; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		--Package #3
+		--Byte #4 - Checksum: 11010110
+		MOSI <= 1; --bit: 1
+		SS <= '0'; --Transmission starts
+		wait for Mclk_period*3;
+		SCK <= '0'; -- SPI clock activates. Is idle high when CPOL in arduino is 1
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 2
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:3
+		wait for Mclk_period*3;
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 4
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit:5
+		wait for Mclk_period*3
+		SCK <= '0'; 
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit: 6
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1'; --bit:7
+		wait for Mclk_period*3
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0'; --bit: 8
+		wait for Mclk_period*3;
+		SCK <= '0';
+		wait for Mclk_period*3;
+		SCK <= '1';
+		SS <= '1';
+		
+		wait for Mclk_period*5;
+		
+		
       wait;
    end process;
 

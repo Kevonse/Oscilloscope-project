@@ -275,8 +275,8 @@ end process;
 		Freq <= FreqVal;--Frequency output is assigned
 		SigEn <= Enable;
 		--LED <= ByteIn;
-		LED(7) <= Enable;
-		--LED <= SyncVal;
+		--LED(7) <= Enable;
+		LED <= SyncVal;
 		--LED <= AmplVal;
 		--LED <= FreqVal;
 		--LED <= "000000" & ShapeVal;
