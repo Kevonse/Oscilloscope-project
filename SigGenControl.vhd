@@ -51,7 +51,8 @@ component shiftreg is
 			  SS: in std_logic;
 			  Mclk: in std_logic;
            MOSI : in  STD_LOGIC;
-           SPIdat : out  STD_LOGIC_vector(7 downto 0));
+			  SPIDAT : OUT STD_LOGIC_VECTOR (7 downto 0));
+           --LED : out  STD_LOGIC_vector(7 downto 0));
 end component;
 
 component SPIHandler is

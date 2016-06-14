@@ -179,41 +179,40 @@ BEGIN
 		wait for Mclk_period*3;
 		SS <= '1';
 		wait for Mclk_period*3;
-		DataIn <= "11010111"; --Checksum byte
+		DataIn <= "11010110"; --Checksum byte
 		wait for Mclk_period*3;
 		SS <= '0'; --Transmit 4th byte
 		wait for Mclk_period*3;
 		SS <= '1'; --Package has been transmitted
 		
-		wait for Mclk_period*5;
+		--wait for Mclk_period*5;
 		
-		--4th package transmitted
-		DataIn <= "10101010"; --Sync byte
-		wait for Mclk_period*3;
-		SS <= '0'; --Transmit 1st byte
-		wait for Mclk_period*3;
-		SS <= '1';
-		wait for Mclk_period*3;
-		DataIn <= "00001111"; --Address byte
-		wait for Mclk_period*3;
-		SS <= '0'; --Transmit 2nd byte
-		wait for Mclk_period*3;
-		SS <= '1';
-		wait for Mclk_period*3;
-		DataIn <= "00000000"; --Data byte- Checksum byte
-		wait for Mclk_period*3;
-		SS <= '0'; --Transmit 3rd byte
-		wait for Mclk_period*3;
-		SS <= '1';
-		wait for Mclk_period*3;
-		DataIn <= "10100100"; --Checksum byte
-		wait for Mclk_period*3;
-		SS <= '0'; --Transmit 4th byte
-		wait for Mclk_period*3;
-		SS <= '1'; --Package has been transmitted
+--		--4th package transmitted
+--		DataIn <= "10101010"; --Sync byte
+--		wait for Mclk_period*3;
+--		SS <= '0'; --Transmit 1st byte
+--		wait for Mclk_period*3;
+--		SS <= '1';
+--		wait for Mclk_period*3;
+--		DataIn <= "00001111"; --Address byte
+--		wait for Mclk_period*3;
+--		SS <= '0'; --Transmit 2nd byte
+--		wait for Mclk_period*3;
+--		SS <= '1';
+--		wait for Mclk_period*3;
+--		DataIn <= "00000000"; --Data byte- Checksum byte
+--		wait for Mclk_period*3;
+--		SS <= '0'; --Transmit 3rd byte
+--		wait for Mclk_period*3;
+--		SS <= '1';
+--		wait for Mclk_period*3;
+--		DataIn <= "10100100"; --Checksum byte
+--		wait for Mclk_period*3;
+--		SS <= '0'; --Transmit 4th byte
+--		wait for Mclk_period*3;
+--		SS <= '1'; --Package has been transmitted
 		
 		wait for Mclk_period*5;
-		Reset <= '1';
 		
       wait;
    end process;

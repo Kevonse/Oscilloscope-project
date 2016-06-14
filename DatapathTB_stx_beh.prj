@@ -1,0 +1,2 @@
+vhdl isim_temp "SigGenDatapath.vhd"
+vhdl isim_temp "DatapathTB.vhd"

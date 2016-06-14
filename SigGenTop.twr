@@ -45,10 +45,10 @@ Setup/Hold to clock Mclk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |    1.514(R)|   -0.028(R)|Mclk_BUFGP        |   0.000|
-Reset       |    4.045(R)|    0.246(R)|Mclk_BUFGP        |   0.000|
-SCK         |   -0.254(R)|    1.384(R)|Mclk_BUFGP        |   0.000|
-SS          |    2.649(R)|    0.623(R)|Mclk_BUFGP        |   0.000|
+MOSI        |    0.579(R)|    0.721(R)|Mclk_BUFGP        |   0.000|
+Reset       |    4.348(R)|    0.135(R)|Mclk_BUFGP        |   0.000|
+SCK         |    0.095(R)|    1.109(R)|Mclk_BUFGP        |   0.000|
+SS          |    0.899(R)|    0.459(R)|Mclk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock Mclk to Pad
@@ -56,15 +56,8 @@ Clock Mclk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-LED<0>      |    7.720(R)|Mclk_BUFGP        |   0.000|
-LED<1>      |    7.564(R)|Mclk_BUFGP        |   0.000|
-LED<2>      |    7.975(R)|Mclk_BUFGP        |   0.000|
-LED<3>      |    7.593(R)|Mclk_BUFGP        |   0.000|
-LED<4>      |    7.571(R)|Mclk_BUFGP        |   0.000|
-LED<5>      |    7.323(R)|Mclk_BUFGP        |   0.000|
-LED<6>      |    8.145(R)|Mclk_BUFGP        |   0.000|
-LED<7>      |    7.762(R)|Mclk_BUFGP        |   0.000|
-PWMOut      |   40.665(R)|Mclk_BUFGP        |   0.000|
+LED<7>      |    8.099(R)|Mclk_BUFGP        |   0.000|
+PWMOut      |   41.489(R)|Mclk_BUFGP        |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock Mclk
@@ -72,25 +65,18 @@ Clock to Setup on destination clock Mclk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Mclk           |    4.134|         |         |         |
+Mclk           |    4.343|         |         |         |
 ---------------+---------+---------+---------+---------+
 
-Pad to Pad
----------------+---------------+---------+
-Source Pad     |Destination Pad|  Delay  |
----------------+---------------+---------+
-Reset          |PWMOut         |   11.800|
----------------+---------------+---------+
 
-
-Analysis completed Tue Jun 14 11:51:09 2016 
+Analysis completed Tue Jun 14 17:07:40 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 175 MB
+Peak Memory Usage: 174 MB
 
 
 

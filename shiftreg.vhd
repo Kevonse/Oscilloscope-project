@@ -42,9 +42,10 @@ architecture Behavioral of shiftreg is
 
 signal sclk: std_logic_vector(1 downto 0); --sample value of SCK signal
 signal shiftval: std_logic_vector(7 downto 0); --output
+signal SSsample : std_logic_vector(1 downto 0);
 
 begin
-	Sclock : process(reset, Mclk)--Register keeps track of SCK signalvalue foreach Mclk pulse.
+	Sclock : process(reset, Mclk)--Samples SCK
 	begin
 		if reset = '1' then 
 			sclk <= "00";
@@ -53,20 +54,37 @@ begin
 		end if;	
 	end process;
 
-	shiftreg : process(reset,Mclk, SS) --register holding incoming byte
+	shiftreg : process(reset,Mclk) --register holding incoming byte
 		begin
 			if reset = '1' then 
 				shiftval <= "00000000";	
-			elsif SS = '0' then
-				if Mclk'event and Mclk = '1' then
-					if sclk = "01" then --On rising edge SCK
-						shiftval <=  shiftval(6 downto 0) & MOSI; --Left shift shiftval with bit from master unit
-					end if;
+			elsif Mclk'event and Mclk = '1' then
+				if sclk = "10" then --SCK has just gone low
+					shiftval <=  shiftval(6 downto 0) & MOSI; --Left shift shiftval with bit from master unit
 				end if;
 			end if;	
 	end process;
 	
-	SPIdat <= shiftval; --Output is set to value of received byte
+	
+	Byteholder : process(Reset,Mclk)
+		Begin
+			if reset = '1' then 	
+				SPIdat <= x"00";
+			elsif Mclk'event and Mclk = '1' then
+				If SSsample = "11" then
+					SPIdat <= shiftval;
+				end if;
+			end if;
+		end process;
+	
+	SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
+		begin
+			if reset = '1' then 
+				SSsample <= "11"; --changed from previous "11"
+			elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
+				SSsample <= SSsample(0) & SS ; --Left shift signal value
+			end if;	
+	end process;
 	
 end Behavioral;
 

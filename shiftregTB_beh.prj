@@ -1,0 +1,2 @@
+vhdl work "shiftreg.vhd"
+vhdl work "shiftregTB.vhd"

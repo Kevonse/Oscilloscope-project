@@ -53,7 +53,8 @@ signal ByteTransfCompl : std_logic; --Signal indicating if byte has been transfe
 type StateType is ( Idle, AdrS, DataS, CheckSumEvalS, SyncS);--States indicating current byte to be received
 signal State, nState: StateType; --Current state and next state
 signal Package_loaded : std_logic; --Signal goes high when checksum byte is loaded
-signal Pack_load_sample : std_logic_vector(1 downto 0); 
+signal Pack_load_sample : std_logic_vector(1 downto 0);
+signal Enable : std_logic; --Signal holding value for output SigEn 
 
 begin
 
@@ -65,8 +66,7 @@ begin
 	elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
 		SSsample <= SSsample(0) & SS ; --Left shift signal value
 		if SSsample = "01" then --if SS has gone high (8 bits transferred).
-		ByteTransfCompl <= '1';
-	--	elsif SSsample = "10" then
+			ByteTransfCompl <= '1';
 		else
 			ByteTransfCompl <= '0';
 		end if;
@@ -79,7 +79,6 @@ begin
   if Reset = '1' then ByteIn <= x"00"; --reset signal holding incoming byte
   elsif Mclk'event and Mclk = '1' then
       ByteIn <= DataIn; --Signal holding transmitted byte is set.
-		LED <= ByteIn; --Set LED's based in byte held by ByteIn signal. Used for testing transmission
     end if;
 end process;
 
@@ -127,11 +126,9 @@ ShapeReg: process (Reset, Mclk)--Register holding shape byte
 begin
 	if Reset = '1' then 
 		ShapeVal <= "00";
-		--Shape <= "00";
   elsif Mclk'event and Mclk = '1' then
     if ShapeEn = '1' then --Load byte into register
       ShapeVal <= Data(1 downto 0); --Shape value is set. 2 LSB's of Data byte
-		--Shape <= ShapeVal; --Shape output is assigned
     end if;
   end if;
 end process;
@@ -140,11 +137,9 @@ AmplReg: process (Reset, Mclk)--Register holding amplitude byte
 begin
 	if Reset = '1' then 
 		AmplVal <= x"00";
-		--Ampl <= X"00";
 	elsif Mclk'event and Mclk = '1' then
 		if AmplEn = '1' then --load byte into this register
 			AmplVal <= Data;--Amplitude value is set
-			--Ampl <= AmplVal;--Amplitude output is assigned
 		end if;
    end if;
 end process;
@@ -152,12 +147,12 @@ end process;
 FreqReg: process (Reset, Mclk)--Register holding frequency byte
 begin
 	if Reset = '1' then 
-		--Freq <= x"00";
 		FreqVal <= X"00";
+		Enable <= '0'; --Don't enable an output signal
   elsif Mclk'event and Mclk = '1' then
     if FreqEn = '1' then --load byte into this register
       FreqVal <= Data;--Frequency value is set
-		--Freq <= FreqVal;--Frequency output is assigned
+		Enable <= '1'; --Enable an output signal
     end if;
   end if;
 end process;
@@ -258,13 +253,11 @@ begin
 	ShapeEn <= '0';
 	AmplEn <= '0';
 	FreqEn <= '0';
-	SigEn <= '0';
 	
 	if Reset = '1' then
 		ShapeEn <= '0';
 		AmplEn <= '0';
 		FreqEn <= '0';
-		SigEn <= '0';
 	else
 		if Package_Ok = '1' then --Checksums matched
 			if AdrVal = X"01" then --If address indicates data is a shape value
@@ -273,15 +266,20 @@ begin
 				AmplEn <= '1';
 			elsif AdrVal = X"03" then --If address indicates that data is a frequency value
 				FreqEn <= '1';
-				SigEn <= '1'; --Registers have been loaded with their values
 			end if;
-		else
-			SigEn <= '0';
 		end if;
 	end if;
 end process;
 		Shape <= ShapeVal; --Shape output is assigned
 		Ampl <= AmplVal;--Amplitude output is assigned
 		Freq <= FreqVal;--Frequency output is assigned
+		SigEn <= Enable;
+		--LED <= ByteIn;
+		LED(7) <= Enable;
+		--LED <= SyncVal;
+		--LED <= AmplVal;
+		--LED <= FreqVal;
+		--LED <= "000000" & ShapeVal;
+		
 end Behavioral;
 

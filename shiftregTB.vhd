@@ -92,62 +92,64 @@ BEGIN
       -- hold reset state for 100 ns.
       wait for 10 ns;	
 		Reset <= '1'; --Reset all signals
-		SCK <= '0';
+		SCK <= '1';
 		SS <= '1';
       wait for Mclk_period*5;
 		Reset <= '0';
 		
       -- Transfer 1 byte. Sync byte
 		
-		--1st bit
-		MOSI <= '1';
+		--1 byte transfer: Byte: 10101010
+		MOSI <= '1';--1st bit
+		wait for Mclk_period*3;
 		SS <= '0'; --Start transfer
-		SCK <= '1';
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--2nd bit
-		MOSI <= '0';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0';--2nd bit
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--3rd bit
-		MOSI <= '1';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1';--3rd bit
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--4th bit
-		MOSI <= '0';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0';--4th bit
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--5th bit
-		MOSI <= '1';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1';--5th bit
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--6th bit
-		MOSI <= '0';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0';--6th bit
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--7th bit
-		MOSI <= '1';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '1';--7th bit
 		wait for Mclk_period*3;
 		SCK <= '0';
 		wait for Mclk_period*3;
-		--8th bit
-		MOSI <= '0';
 		SCK <= '1';
+		wait for Mclk_period*3;
+		MOSI <= '0';--8th bit
+		wait for Mclk_period*3;
+		SCK <= '0';
 		wait for Mclk_period*3;
 		SS <= '1'; --Stop transmission
-		SCK <= '0';
+		SCK <= '1';
 		
       wait;
    end process;
