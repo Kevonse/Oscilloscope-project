@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SigGenTop.ncd
+OUTFILE=C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SigGenTop.bit
+FAMILY=Spartan3E
+PART=xc3s100e-4cp132
+WORKINGDIR=C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt
+LICENSE=WebPack
+USER_INFO=211148515_0_0_571

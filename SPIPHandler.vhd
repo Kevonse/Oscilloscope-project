@@ -50,8 +50,10 @@ signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --
 signal ShapeVal : Std_logic_vector(1 downto 0); --shape value
 signal SSsample : std_logic_vector(1 downto 0); --Sample of SS signal
 signal ByteTransfCompl : std_logic; --Signal indicating if byte has been transferred. Must be so if SS has gone high again.
-type StateType is ( AdrS, DataS, CheckSumEvalS, SyncS);--States indicating current byte to be received
+type StateType is ( Idle, AdrS, DataS, CheckSumEvalS, SyncS);--States indicating current byte to be received
 signal State, nState: StateType; --Current state and next state
+signal Package_loaded : std_logic; --Signal goes high when checksum byte is loaded
+signal Pack_load_sample : std_logic_vector(1 downto 0); 
 
 begin
 
@@ -123,33 +125,39 @@ end process;
 
 ShapeReg: process (Reset, Mclk)--Register holding shape byte
 begin
-  if Reset = '1' then ShapeVal <= "00";
+	if Reset = '1' then 
+		ShapeVal <= "00";
+		--Shape <= "00";
   elsif Mclk'event and Mclk = '1' then
     if ShapeEn = '1' then --Load byte into register
       ShapeVal <= Data(1 downto 0); --Shape value is set. 2 LSB's of Data byte
-		Shape <= ShapeVal; --Shape output is assigned
+		--Shape <= ShapeVal; --Shape output is assigned
     end if;
   end if;
 end process;
 
 AmplReg: process (Reset, Mclk)--Register holding amplitude byte
 begin
-	if Reset = '1' then AmplVal <= x"00";
+	if Reset = '1' then 
+		AmplVal <= x"00";
+		--Ampl <= X"00";
 	elsif Mclk'event and Mclk = '1' then
 		if AmplEn = '1' then --load byte into this register
 			AmplVal <= Data;--Amplitude value is set
-			Ampl <= AmplVal;--Amplitude output is assigned
+			--Ampl <= AmplVal;--Amplitude output is assigned
 		end if;
    end if;
 end process;
 
 FreqReg: process (Reset, Mclk)--Register holding frequency byte
 begin
-  if Reset = '1' then Freq <= x"00";
+	if Reset = '1' then 
+		--Freq <= x"00";
+		FreqVal <= X"00";
   elsif Mclk'event and Mclk = '1' then
     if FreqEn = '1' then --load byte into this register
       FreqVal <= Data;--Frequency value is set
-		Freq <= FreqVal;--Frequency output is assigned
+		--Freq <= FreqVal;--Frequency output is assigned
     end if;
   end if;
 end process;
@@ -160,17 +168,29 @@ begin
 		ChecksumCalc <= x"00"; --calculated byte
 		Package_Ok <= '0';
 	elsif Mclk'event and Mclk = '1' then
-		if SyncVal = "10101010" then --Sync byte has this value in general. Used to avoid OK checksum when reset is high.
-			ChecksumCalc <= SyncVal xor AdrVal xor ByteIn; --Checksum is calculated based on 3 earlier bytes in package
-			
+		if Pack_load_sample = "01" then --If all bytes in package have been loaded
+			ChecksumCalc <= SyncVal xor AdrVal xor Data; --Checksum is calculated based on 3 earlier bytes in package
+		elsif Pack_load_sample = "10" then
 			if ChecksumVal = ChecksumCalc then --If checksum sent and checksum calculated matches
 				Package_Ok <= '1'; --Raise OK signal
 			else
 				Package_Ok <= '0'; --Checksums did not match
 			end if;
+		else
+			Package_Ok <= '0';
 		end if;
   end if;
 end process;
+
+Package_sampler : Process(Reset, Mclk) --Sampling value of Package_loaded
+begin
+	if reset = '1' then 
+		Pack_load_sample <= "00";
+	elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
+		Pack_load_sample <= Pack_load_sample(0) & Package_loaded ; --Left shift signal value
+	end if;
+end process;
+
 
 
 
@@ -184,13 +204,15 @@ begin
 end process;
 
 
-StateDec: process (Reset, State, ByteIn, ByteTransfCompl, AdrVal)--statemachine
+StateDec: process (Reset, State, ByteIn, ByteTransfCompl, AdrVal, Package_loaded)--statemachine
 begin
 	--Reset load signals
 	SyncEn <= '0';
 	DataEn <= '0';
 	ChecksumEn <= '0';
 	AdrEn <= '0';
+	Package_loaded <= '0';
+	nState <= State;
 	
 	if Reset = '1' then --Output is zero if reset signal is set to high
 		--Reset load signals
@@ -199,25 +221,35 @@ begin
 		ChecksumEn <= '0';
 		AdrEn <= '0';
 		nState <= SyncS;
+		Package_loaded <= '0';
 	else
-		if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
-			case state is
-				when SyncS => --Sync state
+		case state is
+			when SyncS => --Sync state
+				if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
 					SyncEn <= '1'; --Load data into SyncReg
 					nState <= AdrS; --next expected byte is the address byte
-				when AdrS => --State is AdrS
+				end if;
+			when AdrS => --State is AdrS
+				if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
 					AdrEn <= '1'; --Load data into AdrReg
 					nState <= DataS; --Next expected byte is Data (Shape, Amplitude, Frequency)
-				when DataS => --Expected byte is data (Shape, Amplitude, Frequency)
+				end if;
+			when DataS => --Expected byte is data (Shape, Amplitude, Frequency)
+				if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
 					DataEn <= '1'; --load data into DataReg
 					nState <= CheckSumEvalS; --Next expected byte is checksum
-				when CheckSumEvalS => --Expected byte is the checksum
+				end if;
+			when CheckSumEvalS => --Expected byte is the checksum
+				if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
 					ChecksumEn <= '1'; --load data into checksumReg
-					nState <= SyncS; --Expect new package
-				when others => --If none of the states applied
-					nState <= SyncS; --Set state to expect new package
-			end case;
-		end if;
+					nState <= Idle; --Expect new package
+				end if;
+			when Idle =>
+				Package_loaded <= '1';
+				nState <= SyncS;
+			when others => --If none of the states applied
+				nState <= SyncS; --Set state to expect new package
+		end case;
 	end if;
 end process;
 
@@ -241,14 +273,15 @@ begin
 				AmplEn <= '1';
 			elsif AdrVal = X"03" then --If address indicates that data is a frequency value
 				FreqEn <= '1';
-			else
 				SigEn <= '1'; --Registers have been loaded with their values
-			end if;	
+			end if;
 		else
 			SigEn <= '0';
 		end if;
 	end if;
 end process;
-		
+		Shape <= ShapeVal; --Shape output is assigned
+		Ampl <= AmplVal;--Amplitude output is assigned
+		Freq <= FreqVal;--Frequency output is assigned
 end Behavioral;
 

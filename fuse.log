@@ -14,5 +14,5 @@ Compiling architecture behavior of entity spihandlertb
 Time Resolution for simulation is 1ps.
 Compiled 5 VHDL Units
 Built simulation executable C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_isim_beh.exe
-Fuse Memory Usage: 29020 KB
-Fuse CPU Usage: 421 ms
+Fuse Memory Usage: 28952 KB
+Fuse CPU Usage: 484 ms

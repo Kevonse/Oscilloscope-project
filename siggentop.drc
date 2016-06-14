@@ -1,0 +1,8 @@
+Release 14.7 Drc P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Tue Jun 14 11:51:13 2016
+
+drc -z SigGenTop.ncd SigGenTop.pcf
+
+DRC detected 0 errors and 0 warnings.
