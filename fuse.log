@@ -1,19 +1,28 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -o "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_isim_beh.exe" -prj "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_beh.prj" "work.SPIHandlerTB" 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -o "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB_isim_beh.exe" -prj "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB_beh.prj" "work.SigGenTopTB" 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
 Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" into library work
-Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB.vhd" into library work
+Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" into library work
+Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" into library work
+Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" into library work
+Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" into library work
+Parsing VHDL file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity shiftreg [shiftreg_default]
 Compiling architecture behavioral of entity SPIHandler [spihandler_default]
-Compiling architecture behavior of entity spihandlertb
+Compiling architecture behavioral of entity SigGenControl [siggencontrol_default]
+Compiling architecture behavioral of entity SigGenDatapath [\SigGenDatapath(('0','0','1','0'...]
+Compiling architecture behavioral of entity SigGenTop [siggentop_default]
+Compiling architecture behavior of entity siggentoptb
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 5 VHDL Units
-Built simulation executable C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIHandlerTB_isim_beh.exe
-Fuse Memory Usage: 29156 KB
-Fuse CPU Usage: 390 ms
+Compiled 15 VHDL Units
+Built simulation executable C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB_isim_beh.exe
+Fuse Memory Usage: 33588 KB
+Fuse CPU Usage: 577 ms

@@ -1,0 +1,10 @@
+Command line:
+   SigGenTopTB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  51165
+
+Tue Jun 14 21:45:05 2016
+
+
+ Elaboration Time: 0.03125 sec
