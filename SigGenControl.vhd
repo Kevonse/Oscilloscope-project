@@ -40,10 +40,41 @@ entity SigGenControl is
            Freq : out STD_LOGIC_VECTOR (7 downto 0);
 			  LED : out STD_LOGIC_VECTOR (7 downto 0);
            SigEn : out  STD_LOGIC;
+			  DispSelect : in STD_LOGIC;
+			  cat :    out std_logic_vector(7 downto 0);  -- Common cathodes
+           an :     out std_logic_vector(3 downto 0); -- Common Anodes
            MISO : out  STD_LOGIC);
 end SigGenControl;
 
 architecture Behavioral of SigGenControl is
+
+signal DispBTNOut : std_logic;
+signal DispOut : std_logic_vector(19 downto 0);
+Signal ShapeVal : std_logic_vector(1 downto 0);
+Signal AmplVal,FreqVal : std_logic_vector(7 downto 0);
+
+component BTNdb is
+  port( Reset, Clk: in std_logic;
+        BTNin: in std_logic;
+        BTNout: out std_logic);
+end component;
+
+component SevenSeg5 is
+    Port ( Reset,Clk: in  std_logic;    
+	        Data :   in  std_logic_vector (19 downto 0); -- Binary data
+           cat :    out std_logic_vector(7 downto 0);  -- Common cathodes
+           an :     out std_logic_vector(3 downto 0)); -- Common Anodes
+end component;
+
+component DispMux is
+    Port ( ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
+           AmplDisp : in  STD_LOGIC_VECTOR (7 downto 0);
+           FreqDisp : in  STD_LOGIC_VECTOR (7 downto 0);
+           --StartPoint : in  STD_LOGIC_VECTOR (19 downto 0);
+           DispOut : out  STD_LOGIC_VECTOR (19 downto 0);
+           Switch : in  STD_LOGIC);
+end component;
+
 
 component shiftreg is
     Port ( Reset : in  STD_LOGIC;
@@ -70,6 +101,10 @@ end component;
 Signal SregIn : std_logic_vector(7 downto 0);
 
 begin
+Shape <= ShapeVal;
+Ampl <= AmplVal;
+Freq <= FreqVal;
+
 
 U2 : shiftreg port map(Reset => Reset,
 							  SCK => SCK,
@@ -81,11 +116,31 @@ U2 : shiftreg port map(Reset => Reset,
 U4 : SPIHandler port map(Reset => Reset,
 								 DataIn => SregIn, 
 								 Mclk => Mclk, 
-								 Shape => Shape,
-								 Ampl => Ampl,
-								 Freq => Freq,
+								 Shape => ShapeVal,
+								 Ampl => AmplVal,
+								 Freq => FreqVal,
 								 SigEn => SigEn, 
 								 SS => SS,
-								 LED => LED);
+							    LED => LED);
+								 
+U5 : SevenSeg5 Port map(Reset => Reset, 
+							  Clk => Mclk,
+							  Data => DispOut,
+							  an => an,
+							  cat => cat);
+							  
+U6 : BTNdb port map(Reset => Reset, 
+									Clk => Mclk,
+									BTNin => DispSelect,
+									BTNOut =>DispBTNOut);
+									
+U7 : DispMux Port map (ShapeDisp => ShapeVal,
+							  AmplDisp => AmplVal,
+							  FreqDisp => FreqVal,
+							  Switch => DispBTNOut,
+							  DispOut => DispOut);
+							  
+							  
+							  
 end Behavioral;
 

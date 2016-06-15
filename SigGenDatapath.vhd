@@ -42,7 +42,7 @@ architecture Behavioral of SigGenDatapath is
 
 signal SigCnt, FreqCnt: std_logic_vector(11 downto 0);
 signal SigCnt_int, nSigCnt_int : std_logic_vector(14 downto 0);
-signal Sig, SigSquare, SigSaw : std_logic_vector(7 downto 0); --, SigSinus
+signal Sig, SigSquare, SigSaw, SigSinus : std_logic_vector(7 downto 0); --, SigSinus
 signal SigAmpl: std_logic_vector(6 downto 0); 
 signal PWMcnt: std_logic_vector(6 downto 0) := "0000000";
 signal PWM, PWMwrap : std_logic;
@@ -69,7 +69,7 @@ begin
   end if;
 end process;
 
---SinusDec : entity WORK.SinusLUT PORT MAP (clka => Clk, addra => SigCnt, douta => SigSinus);
+SinusDec : entity WORK.SinusLUT PORT MAP (clka => Clk, addra => SigCnt, douta => SigSinus);
 
 PWMcount: process(Reset, Clk)
 variable PWMcntvar: std_logic_vector(7 downto 0);
@@ -92,8 +92,8 @@ SawDec: SigSaw <= SigCnt(11 downto 4);
 
 SigMux: Sig <= X"FF" when Shape = "00" else
                SigSquare when Shape = "01" else
-               SigSaw; --when Shape = "10" else
-               --SigSinus;
+               SigSaw when Shape = "10" else
+               SigSinus;
 
 
 AmplDec: process(Ampl, Sig)

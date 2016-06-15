@@ -1,0 +1,4 @@
+vhdl work "SPIPHandler.vhd"
+vhdl work "shiftreg.vhd"
+vhdl work "DispMux.vhd"
+vhdl work "SigGenControl.vhd"
