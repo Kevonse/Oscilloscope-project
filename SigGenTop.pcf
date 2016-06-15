@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Jun 15 10:56:55 2016
+// Written by: Map P.20131013 on Wed Jun 15 12:14:07 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -16,6 +16,7 @@ COMP "SS" LOCATE = SITE "C5" LEVEL 1;
 COMP "LED<7>" LOCATE = SITE "G1" LEVEL 1;
 COMP "MOSI" LOCATE = SITE "B6" LEVEL 1;
 COMP "Reset" LOCATE = SITE "A7" LEVEL 1;
+COMP "PWMOut" LOCATE = SITE "B2" LEVEL 1;
 NET "Mclk_BUFGP/IBUFG" BEL "Mclk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 SCHEMATIC END;
 

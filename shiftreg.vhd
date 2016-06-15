@@ -80,7 +80,7 @@ begin
 	SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
 		begin
 			if reset = '1' then 
-				SSsample <= "00"; --changed from previous "11"
+				SSsample <= "11"; --changed from previous "11"
 			elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
 				SSsample <= SSsample(0) & SS ; --Left shift signal value
 			end if;	

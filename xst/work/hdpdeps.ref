@@ -1,35 +1,35 @@
 V3 32
 FL C:/Users/Skrum_000/Desktop/shiftreg.vhd 2016/06/08.09:30:11 P.20131013
-FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" 2016/06/15.10:43:48 P.20131013
-EN work/shiftreg 1465980280 \
+FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" 2016/06/15.11:29:11 P.20131013
+EN work/shiftreg 1465985345 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/shiftreg/Behavioral 1465980281 \
+AR work/shiftreg/Behavioral 1465985346 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" \
-      EN work/shiftreg 1465980280
+      EN work/shiftreg 1465985345
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" 2016/06/14.15:37:28 P.20131013
-EN work/SigGenControl 1465980284 \
+EN work/SigGenControl 1465985349 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SigGenControl/Behavioral 1465980285 \
+AR work/SigGenControl/Behavioral 1465985350 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" \
-      EN work/SigGenControl 1465980284 CP shiftreg CP SPIHandler
+      EN work/SigGenControl 1465985349 CP shiftreg CP SPIHandler
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" 2016/06/09.12:20:32 P.20131013
-EN work/SigGenDatapath 1465980286 \
+EN work/SigGenDatapath 1465985351 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/SigGenDatapath/Behavioral 1465980287 \
+AR work/SigGenDatapath/Behavioral 1465985352 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" \
-      EN work/SigGenDatapath 1465980286 CP FreqCnt CP nSigCnt_int CP PWMwrap \
+      EN work/SigGenDatapath 1465985351 CP FreqCnt CP nSigCnt_int CP PWMwrap \
       CP SigSquare CP SigSaw CP Sig CP PWM CP PWMout
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" 2016/06/11.21:18:15 P.20131013
-EN work/SigGenTop 1465980288 \
+EN work/SigGenTop 1465985353 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SigGenTop/Behavioral 1465980289 \
+AR work/SigGenTop/Behavioral 1465985354 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" \
-      EN work/SigGenTop 1465980288 CP SigGenControl CP SigGenDatapath
+      EN work/SigGenTop 1465985353 CP SigGenControl CP SigGenDatapath
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" 2016/06/11.21:05:46 P.20131013
 EN work/SigGenTopTB 0 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" \
@@ -37,10 +37,10 @@ EN work/SigGenTopTB 0 \
 AR work/SigGenTopTB/behavior 0 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" \
       EN work/SigGenTopTB 0 CP SigGenTop
-FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" 2016/06/15.10:44:37 P.20131013
-EN work/SPIHandler 1465980282 \
+FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" 2016/06/15.12:09:00 P.20131013
+EN work/SPIHandler 1465985347 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SPIHandler/Behavioral 1465980283 \
+AR work/SPIHandler/Behavioral 1465985348 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" \
-      EN work/SPIHandler 1465980282
+      EN work/SPIHandler 1465985347

@@ -199,7 +199,7 @@ begin
 end process;
 
 
-StateDec: process (Reset, State, AdrVal, Package_loaded, ByteTransfCompl)--statemachine , 
+StateDec: process (Reset, State, AdrVal, Package_loaded, ByteTransfCompl, DataIn)--statemachine , 
 begin
 	--Reset load signals
 	SyncEn <= '0';
@@ -220,7 +220,7 @@ begin
 	else
 		case state is
 			when SyncS => --Sync state
-				if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
+				if ByteTransfCompl = '1' and datain = x"AA" then --If byte has been transferred run statemachine. SSsample = "01".
 					SyncEn <= '1'; --Load data into SyncReg
 					nState <= AdrS; --next expected byte is the address byte
 				end if;
@@ -276,10 +276,12 @@ end process;
 		SigEn <= Enable;
 		--LED <= ByteIn;
 		--LED(7) <= Enable;
-		LED <= SyncVal;
-		--LED <= AmplVal;
-		--LED <= FreqVal;
-		--LED <= "000000" & ShapeVal;
+		--LED <= SyncVal; --Value on LED: 11010110, equal to checksum of last byte sent
+		--LED <= DataIn;
+		--LED <= "000000" & ShapeVal; --Value on LED: 00000000/00000001/00000010 -- WTF?!
+		--LED <= syncval; --Value on LED: 00000000/01111111
+		LED <= FreqVal;
+
 		
 end Behavioral;
 
