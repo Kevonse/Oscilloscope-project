@@ -77,7 +77,7 @@
       <CurrentItem></CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
-   <CurrentView>Implementation</CurrentView>
+   <CurrentView>Behavioral Simulation</CurrentView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
@@ -95,19 +95,20 @@
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/DatapathTB - behavior C:|Users|Skrum_000|OneDrive|DTU|2. semester|Digitalteknik|Oscilloskop_projekt|DatapathTB.vhd</ClosedNode>
          <ClosedNode>/SPIHandlerTB - behavior C:|Users|Skrum_000|OneDrive|DTU|2. semester|Digitalteknik|Oscilloskop_projekt|SPIHandlerTB.vhd</ClosedNode>
          <ClosedNode>/SigGenTop - Behavioral C:|Users|Skrum_000|OneDrive|DTU|2. semester|Digitalteknik|Oscilloskop_projekt|SigGenTop.vhd</ClosedNode>
          <ClosedNode>/SigGenTopTB - behavior C:|Users|Skrum_000|OneDrive|DTU|2. semester|Digitalteknik|Oscilloskop_projekt|SigGenTopTB.vhd</ClosedNode>
          <ClosedNode>/shiftregTB - behavior C:|Users|Skrum_000|OneDrive|DTU|2. semester|Digitalteknik|Oscilloskop_projekt|shiftregTB.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>xc3s200-4ft256</SelectedItem>
+         <SelectedItem>SigGenTopTB - behavior (C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000012f000000020000000000000000000000000200000064ffffffff0000008100000003000000020000012f0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>xc3s200-4ft256</CurrentItem>
+      <CurrentItem>SigGenTopTB - behavior (C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>

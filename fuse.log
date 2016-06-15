@@ -24,5 +24,5 @@ Compiling architecture behavior of entity siggentoptb
 Time Resolution for simulation is 1ps.
 Compiled 15 VHDL Units
 Built simulation executable C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB_isim_beh.exe
-Fuse Memory Usage: 33588 KB
-Fuse CPU Usage: 577 ms
+Fuse Memory Usage: 34876 KB
+Fuse CPU Usage: 578 ms

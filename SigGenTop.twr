@@ -45,10 +45,10 @@ Setup/Hold to clock Mclk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |    0.579(R)|    0.721(R)|Mclk_BUFGP        |   0.000|
-Reset       |    4.348(R)|    0.135(R)|Mclk_BUFGP        |   0.000|
-SCK         |    0.095(R)|    1.109(R)|Mclk_BUFGP        |   0.000|
-SS          |    0.899(R)|    0.459(R)|Mclk_BUFGP        |   0.000|
+MOSI        |    1.460(R)|    0.012(R)|Mclk_BUFGP        |   0.000|
+Reset       |    3.834(R)|    0.135(R)|Mclk_BUFGP        |   0.000|
+SCK         |    0.790(R)|    0.550(R)|Mclk_BUFGP        |   0.000|
+SS          |    1.072(R)|    0.452(R)|Mclk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock Mclk to Pad
@@ -56,8 +56,15 @@ Clock Mclk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-LED<7>      |    8.099(R)|Mclk_BUFGP        |   0.000|
-PWMOut      |   41.489(R)|Mclk_BUFGP        |   0.000|
+LED<0>      |    8.770(R)|Mclk_BUFGP        |   0.000|
+LED<1>      |    7.944(R)|Mclk_BUFGP        |   0.000|
+LED<2>      |    8.646(R)|Mclk_BUFGP        |   0.000|
+LED<3>      |    8.283(R)|Mclk_BUFGP        |   0.000|
+LED<4>      |    8.309(R)|Mclk_BUFGP        |   0.000|
+LED<5>      |    8.833(R)|Mclk_BUFGP        |   0.000|
+LED<6>      |    8.543(R)|Mclk_BUFGP        |   0.000|
+LED<7>      |    8.149(R)|Mclk_BUFGP        |   0.000|
+PWMOut      |   42.034(R)|Mclk_BUFGP        |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock Mclk
@@ -65,11 +72,11 @@ Clock to Setup on destination clock Mclk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Mclk           |    4.343|         |         |         |
+Mclk           |    4.229|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Tue Jun 14 17:07:40 2016 
+Analysis completed Wed Jun 15 10:57:14 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:

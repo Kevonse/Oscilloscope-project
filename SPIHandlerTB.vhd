@@ -105,11 +105,11 @@ BEGIN
 		Reset <= '0';
 		
 		--1st package transmitted
-		DataIn <= "10101010"; --Sync byte
-		wait for Mclk_period*3;
 		SS <= '1';
 		wait for Mclk_period*3;
 		SS <= '0'; --Transmit 1st byte
+		wait for Mclk_period*3;
+		DataIn <= "10101010"; --Sync byte
 		wait for Mclk_period*3;
 		SS <= '1';
 		wait for Mclk_period*3;

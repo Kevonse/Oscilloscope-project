@@ -43,7 +43,7 @@ end SPIHandler;
 
 architecture Behavioral of SPIHandler is
 --Data signal can be either shape, amplitude or frequency before it is loaded to correct register based on adress.
-signal ByteIn, Data, AdrVal, AmplVal, FreqVal, SyncVal, ChecksumVal: std_logic_vector(7 downto 0);--signals holding transmitted bytes
+signal Data, AdrVal, AmplVal, FreqVal, SyncVal, ChecksumVal: std_logic_vector(7 downto 0);--signals holding transmitted bytes - ByteIn,
 signal ChecksumCalc : STD_LOGIC_VECTOR(7 downto 0); --the calculated value of checksum
 signal Package_Ok : STD_LOGIC; --signal indicating if checksum values matched
 signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --Signals for which register to load data into
@@ -62,7 +62,7 @@ SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
 begin
 	if reset = '1' then 
 		SSsample <= "11";
-		ByteTransfCompl <= '0';
+		--ByteTransfCompl <= '0';
 	elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
 		SSsample <= SSsample(0) & SS ; --Left shift signal value
 		if SSsample = "01" then --if SS has gone high (8 bits transferred).
@@ -74,20 +74,20 @@ begin
 	
 end process;
 
-DataInReg: process (Reset, Mclk) --Register has byte transferred into shiftreg from SPI transmission
-begin
-  if Reset = '1' then ByteIn <= x"00"; --reset signal holding incoming byte
-  elsif Mclk'event and Mclk = '1' then
-      ByteIn <= DataIn; --Signal holding transmitted byte is set.
-    end if;
-end process;
+--DataInReg: process (Reset, Mclk) --Register has byte transferred into shiftreg from SPI transmission
+--begin
+--  if Reset = '1' then ByteIn <= x"00"; --reset signal holding incoming byte
+--  elsif Mclk'event and Mclk = '1' then
+--      ByteIn <= DataIn; --Signal holding transmitted byte is set.
+--    end if;
+--end process;
 
 SyncReg: process (Reset, Mclk) --Register holds sync byte. 1st byte.
 begin
 	if Reset = '1' then SyncVal <= x"00";
 	elsif Mclk'event and Mclk = '1' then
 		if SyncEn = '1' then --load byte into this register
-			SyncVal <= ByteIn; --sync value is saved as current byte value
+			SyncVal <= DataIn; --sync value is saved as current byte value
 		end if;
 	end if;
 end process;
@@ -97,7 +97,7 @@ begin
 	if Reset = '1' then AdrVal <= x"00";
 	elsif Mclk'event and Mclk = '1' then
 		if AdrEn = '1' then --load byte into this register
-			AdrVal <= ByteIn;--Address output is set to held byte
+			AdrVal <= DataIn;--Address output is set to held byte
 		end if;
   end if;
 end process;
@@ -107,7 +107,7 @@ begin
 	if Reset = '1' then Data <= X"00";
 	elsif Mclk'event and Mclk = '1' then
 		if DataEn = '1' then --load current byte into data byte.
-			Data <= ByteIn;
+			Data <= DataIn;
 		end if;
 	end if;
 end process;
@@ -117,7 +117,7 @@ begin
 	if Reset = '1' then ChecksumVal <= x"00"; --reset signal holding incoming byte
 	elsif Mclk'event and Mclk = '1' then
 		if ChecksumEn = '1' then --load current byte into this register
-			ChecksumVal <= ByteIn;
+			ChecksumVal <= DataIn;
 		end if;
    end if;
 end process;
@@ -199,7 +199,7 @@ begin
 end process;
 
 
-StateDec: process (Reset, State, ByteIn, ByteTransfCompl, AdrVal, Package_loaded)--statemachine
+StateDec: process (Reset, State, AdrVal, Package_loaded, ByteTransfCompl)--statemachine , 
 begin
 	--Reset load signals
 	SyncEn <= '0';
