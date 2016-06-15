@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: SigGenTop.prj
 
@@ -107,12 +107,12 @@ Slice Utilization Ratio Delta      : 5
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" in Library work.
 Architecture behavioral of Entity shiftreg is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" in Library work.
-Entity <spihandler> compiled.
-Entity <spihandler> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity spihandler is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" in Library work.
 Architecture behavioral of Entity siggencontrol is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" in Library work.
-Architecture behavioral of Entity siggendatapath is up to date.
+Entity <siggendatapath> compiled.
+Entity <siggendatapath> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" in Library work.
 Architecture behavioral of Entity siggentop is up to date.
 
@@ -124,7 +124,7 @@ Analyzing hierarchy for entity <SigGenTop> in library <work> (architecture <beha
 Analyzing hierarchy for entity <SigGenControl> in library <work> (architecture <behavioral>).
 
 Analyzing hierarchy for entity <SigGenDatapath> in library <work> (architecture <behavioral>) with generics.
-	PWMinc = "0010000"
+	PWMinc = "0000001"
 
 Analyzing hierarchy for entity <shiftreg> in library <work> (architecture <behavioral>).
 
@@ -147,7 +147,7 @@ Analyzing Entity <SPIHandler> in library <work> (Architecture <behavioral>).
 Entity <SPIHandler> analyzed. Unit <SPIHandler> generated.
 
 Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <behavioral>).
-	PWMinc = "0010000"
+	PWMinc = "0000001"
 Entity <SigGenDatapath> analyzed. Unit <SigGenDatapath> generated.
 
 
@@ -309,10 +309,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <PWMcntvar_mux0001_0> (without init value) has a constant value of 0 in block <SigGenDatapath>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <PWMcntvar_mux0001_1> (without init value) has a constant value of 0 in block <SigGenDatapath>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <PWMcntvar_mux0001_2> (without init value) has a constant value of 0 in block <SigGenDatapath>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <PWMcntvar_mux0001_3> (without init value) has a constant value of 0 in block <SigGenDatapath>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <SigGenTop> ...
 
@@ -334,8 +330,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 105
- Flip-Flops                                            : 105
+# Registers                                            : 109
+ Flip-Flops                                            : 109
 
 =========================================================================
 
@@ -364,15 +360,16 @@ Design Statistics
 # IOs                              : 15
 
 Cell Usage :
-# BELS                             : 342
+# BELS                             : 352
 #      GND                         : 1
-#      INV                         : 5
+#      INV                         : 1
 #      LUT1                        : 7
-#      LUT2                        : 31
+#      LUT2                        : 37
 #      LUT2_L                      : 1
-#      LUT3                        : 66
+#      LUT3                        : 67
+#      LUT3_D                      : 2
 #      LUT3_L                      : 1
-#      LUT4                        : 68
+#      LUT4                        : 73
 #      LUT4_D                      : 3
 #      LUT4_L                      : 2
 #      MULT_AND                    : 9
@@ -380,8 +377,8 @@ Cell Usage :
 #      MUXF5                       : 2
 #      VCC                         : 1
 #      XORCY                       : 69
-# FlipFlops/Latches                : 105
-#      FDC                         : 11
+# FlipFlops/Latches                : 109
+#      FDC                         : 15
 #      FDCE                        : 90
 #      FDE                         : 1
 #      FDP                         : 3
@@ -397,9 +394,9 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-4 
 
- Number of Slices:                      106  out of    960    11%  
- Number of Slice Flip Flops:            105  out of   1920     5%  
- Number of 4 input LUTs:                184  out of   1920     9%  
+ Number of Slices:                      111  out of    960    11%  
+ Number of Slice Flip Flops:            109  out of   1920     5%  
+ Number of 4 input LUTs:                194  out of   1920    10%  
  Number of IOs:                          15
  Number of bonded IOBs:                  15  out of     83    18%  
  Number of GCLKs:                         1  out of     24     4%  
@@ -425,7 +422,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-Mclk                               | BUFGP                  | 105   |
+Mclk                               | BUFGP                  | 109   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -433,7 +430,7 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-Reset                              | IBUF                   | 104   |
+Reset                              | IBUF                   | 108   |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
@@ -441,8 +438,8 @@ Timing Summary:
 Speed Grade: -4
 
    Minimum period: 4.775ns (Maximum Frequency: 209.424MHz)
-   Minimum input arrival time before clock: 5.899ns
-   Maximum output required time after clock: 36.645ns
+   Minimum input arrival time before clock: 5.900ns
+   Maximum output required time after clock: 37.966ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -452,7 +449,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Mclk'
   Clock period: 4.775ns (frequency: 209.424MHz)
-  Total number of paths / destination ports: 857 / 191
+  Total number of paths / destination ports: 947 / 195
 -------------------------------------------------------------------------
 Delay:               4.775ns (Levels of Logic = 4)
   Source:            U1/U4/ChecksumVal_7 (FF)
@@ -466,8 +463,8 @@ Delay:               4.775ns (Levels of Logic = 4)
     ----------------------------------------  ------------
      FDCE:C->Q             1   0.591   0.595  U1/U4/ChecksumVal_7 (U1/U4/ChecksumVal_7)
      LUT4:I0->O            1   0.704   0.424  U1/U4/Mmux_Package_Ok_mux0002132 (U1/U4/Mmux_Package_Ok_mux0002132)
-     LUT4:I3->O            1   0.704   0.000  U1/U4/Mmux_Package_Ok_mux00021154_SW1_G (N12)
-     MUXF5:I1->O           1   0.321   0.424  U1/U4/Mmux_Package_Ok_mux00021154_SW1 (N7)
+     LUT4:I3->O            1   0.704   0.000  U1/U4/Mmux_Package_Ok_mux00021154_SW1_G (N20)
+     MUXF5:I1->O           1   0.321   0.424  U1/U4/Mmux_Package_Ok_mux00021154_SW1 (N15)
      LUT4:I3->O            1   0.704   0.000  U1/U4/Mmux_Package_Ok_mux00021163 (U1/U4/Package_Ok_mux0002)
      FDC:D                     0.308          U1/U4/Package_Ok
     ----------------------------------------
@@ -478,7 +475,7 @@ Delay:               4.775ns (Levels of Logic = 4)
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Mclk'
   Total number of paths / destination ports: 56 / 56
 -------------------------------------------------------------------------
-Offset:              5.899ns (Levels of Logic = 3)
+Offset:              5.900ns (Levels of Logic = 3)
   Source:            Reset (PAD)
   Destination:       U1/U4/SyncVal_7 (FF)
   Destination Clock: Mclk rising
@@ -487,19 +484,19 @@ Offset:              5.899ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           111   1.218   1.462  Reset_IBUF (Reset_IBUF)
-     LUT3:I0->O            1   0.704   0.499  U1/U4/State_FSM_FFd2-In130_SW0 (N9)
+     IBUF:I->O           115   1.218   1.463  Reset_IBUF (Reset_IBUF)
+     LUT3:I0->O            1   0.704   0.499  U1/U4/State_FSM_FFd2-In130_SW0 (N17)
      LUT4:I1->O            8   0.704   0.757  U1/U4/SyncEn1 (U1/U4/SyncEn)
      FDCE:CE                   0.555          U1/U4/SyncVal_0
     ----------------------------------------
-    Total                      5.899ns (3.181ns logic, 2.718ns route)
+    Total                      5.900ns (3.181ns logic, 2.719ns route)
                                        (53.9% logic, 46.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'Mclk'
-  Total number of paths / destination ports: 578164203 / 9
+  Total number of paths / destination ports: 578164211 / 9
 -------------------------------------------------------------------------
-Offset:              36.645ns (Levels of Logic = 40)
+Offset:              37.966ns (Levels of Logic = 40)
   Source:            U1/U4/ShapeVal_1 (FF)
   Destination:       PWMOut (PAD)
   Source Clock:      Mclk rising
@@ -508,62 +505,62 @@ Offset:              36.645ns (Levels of Logic = 40)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             9   0.591   0.995  U1/U4/ShapeVal_1 (U1/U4/ShapeVal_1)
+     FDCE:C->Q            12   0.591   1.136  U1/U4/ShapeVal_1 (U1/U4/ShapeVal_1)
      LUT4:I0->O            8   0.704   0.757  U3/Sig<1>1 (U3/MulC_mux0000<1>_mand)
      MULT_AND:I1->LO       0   0.741   0.000  U3/MulC_mux0000<1>_mand (U3/MulC_mux0000<1>_mand1)
      MUXCY:DI->O           1   0.888   0.000  U3/Madd_MulC_addsub0000_cy<1> (U3/Madd_MulC_addsub0000_cy<1>)
-     XORCY:CI->O           1   0.804   0.424  U3/Madd_MulC_addsub0000_xor<2> (U3/MulC_addsub0000<2>)
-     LUT4:I3->O            1   0.704   0.595  U3/MulC_mux0001<2>1 (U3/MulC_mux0001<2>)
-     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0001_lut<2> (U3/Madd_MulC_addsub0001_lut<2>)
-     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0001_cy<2> (U3/Madd_MulC_addsub0001_cy<2>)
-     XORCY:CI->O           1   0.804   0.455  U3/Madd_MulC_addsub0001_xor<3> (U3/MulC_addsub0001<3>)
-     LUT3:I2->O            1   0.704   0.595  U3/MulC_mux0002<3>1 (U3/MulC_mux0002<3>)
-     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0002_lut<3> (U3/Madd_MulC_addsub0002_lut<3>)
-     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0002_cy<3> (U3/Madd_MulC_addsub0002_cy<3>)
-     XORCY:CI->O           1   0.804   0.455  U3/Madd_MulC_addsub0002_xor<4> (U3/MulC_addsub0002<4>)
-     LUT3:I2->O            1   0.704   0.595  U3/MulC_mux0003<4>1 (U3/MulC_mux0003<4>)
-     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0003_lut<4> (U3/Madd_MulC_addsub0003_lut<4>)
-     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0003_cy<4> (U3/Madd_MulC_addsub0003_cy<4>)
-     XORCY:CI->O           1   0.804   0.455  U3/Madd_MulC_addsub0003_xor<5> (U3/MulC_addsub0003<5>)
-     LUT3:I2->O            1   0.704   0.595  U3/MulC_mux0004<5>1 (U3/MulC_mux0004<5>)
-     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0004_lut<5> (U3/Madd_MulC_addsub0004_lut<5>)
-     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0004_cy<5> (U3/Madd_MulC_addsub0004_cy<5>)
-     XORCY:CI->O           1   0.804   0.455  U3/Madd_MulC_addsub0004_xor<6> (U3/MulC_addsub0004<6>)
-     LUT3:I2->O            1   0.704   0.595  U3/MulC_mux0005<6>1 (U3/MulC_mux0005<6>)
-     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0005_lut<6> (U3/Madd_MulC_addsub0005_lut<6>)
-     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0005_cy<6> (U3/Madd_MulC_addsub0005_cy<6>)
-     XORCY:CI->O           1   0.804   0.455  U3/Madd_MulC_addsub0005_xor<7> (U3/MulC_addsub0005<7>)
-     LUT3:I2->O            1   0.704   0.595  U3/MulC_mux0006<7>1 (U3/MulC_mux0006<7>)
-     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0006_lut<7> (U3/Madd_MulC_addsub0006_lut<7>)
-     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0006_cy<7> (U3/Madd_MulC_addsub0006_cy<7>)
-     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0006_cy<8> (U3/Madd_MulC_addsub0006_cy<8>)
-     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0006_cy<9> (U3/Madd_MulC_addsub0006_cy<9>)
-     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0006_cy<10> (U3/Madd_MulC_addsub0006_cy<10>)
-     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0006_cy<11> (U3/Madd_MulC_addsub0006_cy<11>)
-     XORCY:CI->O           1   0.804   0.455  U3/Madd_MulC_addsub0006_xor<12> (U3/MulC_addsub0006<12>)
-     LUT3:I2->O            1   0.704   0.420  U3/MulC_mux0007<12>1 (U3/SigAmpl<3>)
-     INV:I->O              1   0.704   0.000  U3/Mcompar_PWM_cmp_le0000_lut<3>1_INV_0 (U3/Mcompar_PWM_cmp_le0000_lut<3>)
-     MUXCY:S->O            1   0.464   0.000  U3/Mcompar_PWM_cmp_le0000_cy<3> (U3/Mcompar_PWM_cmp_le0000_cy<3>)
-     MUXCY:CI->O           1   0.059   0.000  U3/Mcompar_PWM_cmp_le0000_cy<4> (U3/Mcompar_PWM_cmp_le0000_cy<4>)
-     MUXCY:CI->O           2   0.459   0.622  U3/Mcompar_PWM_cmp_le0000_cy<5> (U3/Mcompar_PWM_cmp_le0000_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0000_cy<2> (U3/Madd_MulC_addsub0000_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0000_cy<3> (U3/Madd_MulC_addsub0000_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0000_cy<4> (U3/Madd_MulC_addsub0000_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0000_cy<5> (U3/Madd_MulC_addsub0000_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0000_cy<6> (U3/Madd_MulC_addsub0000_cy<6>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0000_xor<7> (U3/MulC_addsub0000<7>)
+     LUT4:I1->O            3   0.704   0.706  U3/MulC_mux0001<7>1 (U3/MulC_mux0001<7>)
+     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0001_lut<7> (U3/Madd_MulC_addsub0001_lut<7>)
+     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0001_cy<7> (U3/Madd_MulC_addsub0001_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  U3/Madd_MulC_addsub0001_cy<8> (U3/Madd_MulC_addsub0001_cy<8>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0001_xor<9> (U3/MulC_addsub0001<9>)
+     LUT4:I1->O            3   0.704   0.706  U3/MulC_mux0002<9>1 (U3/MulC_mux0002<9>)
+     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0002_lut<9> (U3/Madd_MulC_addsub0002_lut<9>)
+     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0002_cy<9> (U3/Madd_MulC_addsub0002_cy<9>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0002_xor<10> (U3/MulC_addsub0002<10>)
+     LUT4:I1->O            3   0.704   0.706  U3/MulC_mux0003<10>1 (U3/MulC_mux0003<10>)
+     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0003_lut<10> (U3/Madd_MulC_addsub0003_lut<10>)
+     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0003_cy<10> (U3/Madd_MulC_addsub0003_cy<10>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0003_xor<11> (U3/MulC_addsub0003<11>)
+     LUT4:I1->O            3   0.704   0.706  U3/MulC_mux0004<11>1 (U3/MulC_mux0004<11>)
+     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0004_lut<11> (U3/Madd_MulC_addsub0004_lut<11>)
+     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0004_cy<11> (U3/Madd_MulC_addsub0004_cy<11>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0004_xor<12> (U3/MulC_addsub0004<12>)
+     LUT4:I1->O            3   0.704   0.706  U3/MulC_mux0005<12>1 (U3/MulC_mux0005<12>)
+     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0005_lut<12> (U3/Madd_MulC_addsub0005_lut<12>)
+     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0005_cy<12> (U3/Madd_MulC_addsub0005_cy<12>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0005_xor<13> (U3/MulC_addsub0005<13>)
+     LUT4:I1->O            3   0.704   0.706  U3/MulC_mux0006<13>1 (U3/MulC_mux0006<13>)
+     LUT2:I0->O            1   0.704   0.000  U3/Madd_MulC_addsub0006_lut<13> (U3/Madd_MulC_addsub0006_lut<13>)
+     MUXCY:S->O            1   0.464   0.000  U3/Madd_MulC_addsub0006_cy<13> (U3/Madd_MulC_addsub0006_cy<13>)
+     XORCY:CI->O           1   0.804   0.499  U3/Madd_MulC_addsub0006_xor<14> (U3/MulC_addsub0006<14>)
+     LUT4:I1->O            1   0.704   0.595  U3/MulC_mux0007<14>1 (U3/SigAmpl<5>)
+     LUT2:I0->O            1   0.704   0.000  U3/Mcompar_PWM_cmp_le0000_lut<5> (U3/Mcompar_PWM_cmp_le0000_lut<5>)
+     MUXCY:S->O            2   0.864   0.622  U3/Mcompar_PWM_cmp_le0000_cy<5> (U3/Mcompar_PWM_cmp_le0000_cy<5>)
      LUT4:I0->O            1   0.704   0.000  U3/PWMOut12 (U3/PWMOut11)
      MUXF5:I0->O           1   0.321   0.420  U3/PWMOut1_f5 (PWMOut_OBUF)
      OBUF:I->O                 3.272          PWMOut_OBUF (PWMOut)
     ----------------------------------------
-    Total                     36.645ns (26.707ns logic, 9.938ns route)
-                                       (72.9% logic, 27.1% route)
+    Total                     37.966ns (26.707ns logic, 11.259ns route)
+                                       (70.3% logic, 29.7% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.40 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.61 secs
  
 --> 
 
-Total memory usage is 311064 kilobytes
+Total memory usage is 307004 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    5 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

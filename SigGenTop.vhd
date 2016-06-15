@@ -57,7 +57,7 @@ component SigGenControl is
 end component;
 
 component SigGenDatapath is
-  generic( PWMinc : std_logic_vector(6 downto 0) := "0010000" );
+  generic( PWMinc : std_logic_vector(6 downto 0) := "0000001" );
   Port ( Reset  : in std_logic;	
          Clk    : in std_logic;
          SigEn  : in std_logic;
