@@ -1,3 +1,4 @@
+vhdl isim_temp "ipcore_dir/SinusLUT.vhd"
 vhdl isim_temp "SPIPHandler.vhd"
 vhdl isim_temp "shiftreg.vhd"
 vhdl isim_temp "SigGenDatapath.vhd"

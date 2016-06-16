@@ -66,8 +66,17 @@ component SevenSeg5 is
            an :     out std_logic_vector(3 downto 0)); -- Common Anodes
 end component;
 
+component DivClk is
+    port ( Reset: in STD_LOGIC;     -- Global Reset (BTN1)
+           Clk: in STD_LOGIC;     -- Master Clock (50 MHz)
+           TimeP: in integer;     -- Time periode of the divided clock (50e6)
+           Clk1: out STD_LOGIC);   -- Divided clock1 (1 Hz)
+end component;
+
 component DispMux is
-    Port ( ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
+    Port ( Reset : in  STD_LOGIC;
+           Mclk : in  STD_LOGIC;
+			  ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
            AmplDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            FreqDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            --StartPoint : in  STD_LOGIC_VECTOR (19 downto 0);
@@ -83,7 +92,6 @@ component shiftreg is
 			  Mclk: in std_logic;
            MOSI : in  STD_LOGIC;
 			  SPIDAT : OUT STD_LOGIC_VECTOR (7 downto 0));
-           --LED : out  STD_LOGIC_vector(7 downto 0));
 end component;
 
 component SPIHandler is
@@ -99,11 +107,10 @@ component SPIHandler is
 end component;
 
 Signal SregIn : std_logic_vector(7 downto 0);
+signal Clk1 : Std_logic;
 
 begin
-Shape <= ShapeVal;
-Ampl <= AmplVal;
-Freq <= FreqVal;
+--led <= sregin;
 
 
 U2 : shiftreg port map(Reset => Reset,
@@ -124,23 +131,32 @@ U4 : SPIHandler port map(Reset => Reset,
 							    LED => LED);
 								 
 U5 : SevenSeg5 Port map(Reset => Reset, 
-							  Clk => Mclk,
-							  Data => DispOut,
-							  an => an,
-							  cat => cat);
+							   Clk => Clk1,
+							   Data => DispOut,
+							   an => an,
+							   cat => cat);
 							  
 U6 : BTNdb port map(Reset => Reset, 
-									Clk => Mclk,
-									BTNin => DispSelect,
-									BTNOut =>DispBTNOut);
+						  Clk => Mclk,
+						  BTNin => DispSelect,
+						  BTNOut =>DispBTNOut);
 									
-U7 : DispMux Port map (ShapeDisp => ShapeVal,
+U7 : DispMux Port map (Reset => Reset,
+							  Mclk => Mclk,
+							  ShapeDisp => ShapeVal,
 							  AmplDisp => AmplVal,
 							  FreqDisp => FreqVal,
 							  Switch => DispBTNOut,
 							  DispOut => DispOut);
 							  
-							  
+U8 : DivClk port map (Reset => Reset,
+							 Clk => Mclk,
+							 TimeP => 50e3,
+							 Clk1 => Clk1);
+
+Shape <= ShapeVal;
+Ampl <= AmplVal;
+Freq <= FreqVal;							  
 							  
 end Behavioral;
 

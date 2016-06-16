@@ -2,6 +2,7 @@ vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop
 vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SPIPHandler.vhd"
 vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\shiftreg.vhd"
 vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SevenSeg5.vhd"
+vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\DivClk.vhd"
 vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\DispMux.vhd"
 vhdl work "C:\Users\Skrum_000\Downloads\BTNdb.vhd"
 vhdl work "C:\Users\Skrum_000\OneDrive\DTU\2. semester\Digitalteknik\Oscilloskop_projekt\SigGenDatapath.vhd"

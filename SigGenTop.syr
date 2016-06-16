@@ -3,13 +3,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: SigGenTop.prj
@@ -118,10 +118,12 @@ Architecture sevenseg_arch of Entity sevenseg5 is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/Downloads/BTNdb.vhd" in Library work.
 Architecture behavioral of Entity btndb is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" in Library work.
-Entity <dispmux> compiled.
-Entity <dispmux> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity dispmux is up to date.
+Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" in Library work.
+Architecture divclk_arch of Entity divclk is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" in Library work.
-Architecture behavioral of Entity siggencontrol is up to date.
+Entity <siggencontrol> compiled.
+Entity <siggencontrol> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" in Library work.
 Architecture behavioral of Entity siggendatapath is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" in Library work.
@@ -147,6 +149,8 @@ Analyzing hierarchy for entity <BTNdb> in library <work> (architecture <behavior
 
 Analyzing hierarchy for entity <DispMux> in library <work> (architecture <behavioral>).
 
+Analyzing hierarchy for entity <DivClk> in library <work> (architecture <divclk_arch>).
+
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -171,6 +175,9 @@ Entity <BTNdb> analyzed. Unit <BTNdb> generated.
 
 Analyzing Entity <DispMux> in library <work> (Architecture <behavioral>).
 Entity <DispMux> analyzed. Unit <DispMux> generated.
+
+Analyzing Entity <DivClk> in library <work> (Architecture <divclk_arch>).
+Entity <DivClk> analyzed. Unit <DivClk> generated.
 
 Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <behavioral>).
 	PWMinc = "0000001"
@@ -242,7 +249,7 @@ Synthesizing Unit <SevenSeg5>.
     Found 4-bit register for signal <an>.
     Found 8-bit register for signal <cat>.
     Found 1-of-4 decoder for signal <AnInt>.
-    Found 1-bit 4-to-1 multiplexer for signal <Data$mux0000> created at line 90.
+    Found 1-bit 4-to-1 multiplexer for signal <Data$mux0000> created at line 92.
     Found 4-bit 4-to-1 multiplexer for signal <DataN>.
     Found 2-bit up counter for signal <DispCount>.
     Summary:
@@ -279,13 +286,22 @@ Unit <BTNdb> synthesized.
 
 Synthesizing Unit <DispMux>.
     Related source file is "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd".
-WARNING:Xst:737 - Found 2-bit latch for signal <DispCount>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Found 20-bit 4-to-1 multiplexer for signal <DispOut>.
-    Found 2-bit adder for signal <DispCount$add0000> created at line 61.
+    Found 2-bit up counter for signal <DispCount>.
     Summary:
-	inferred   1 Adder/Subtractor(s).
+	inferred   1 Counter(s).
 	inferred  20 Multiplexer(s).
 Unit <DispMux> synthesized.
+
+
+Synthesizing Unit <DivClk>.
+    Related source file is "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd".
+    Found 1-bit register for signal <Clk1_D>.
+    Found 25-bit up counter for signal <Cnt1>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <DivClk> synthesized.
 
 
 Synthesizing Unit <SigGenControl>.
@@ -330,22 +346,20 @@ HDL Synthesis Report
 Macro Statistics
 # ROMs                                                 : 1
  16x16-bit ROM                                         : 1
-# Adders/Subtractors                                   : 9
+# Adders/Subtractors                                   : 8
  16-bit adder                                          : 7
- 2-bit adder                                           : 1
  8-bit adder                                           : 1
-# Counters                                             : 2
+# Counters                                             : 4
  12-bit up counter                                     : 1
- 2-bit up counter                                      : 1
+ 2-bit up counter                                      : 2
+ 25-bit up counter                                     : 1
 # Accumulators                                         : 1
  15-bit up accumulator                                 : 1
-# Registers                                            : 20
- 1-bit register                                        : 3
+# Registers                                            : 21
+ 1-bit register                                        : 4
  2-bit register                                        : 5
  4-bit register                                        : 1
  8-bit register                                        : 11
-# Latches                                              : 1
- 2-bit latch                                           : 1
 # Comparators                                          : 4
  12-bit comparator less                                : 1
  7-bit comparator lessequal                            : 1
@@ -398,19 +412,17 @@ Macro Statistics
 # FSMs                                                 : 2
 # ROMs                                                 : 1
  16x16-bit ROM                                         : 1
-# Adders/Subtractors                                   : 9
+# Adders/Subtractors                                   : 8
  16-bit adder                                          : 7
- 2-bit adder                                           : 1
  8-bit adder                                           : 1
-# Counters                                             : 2
+# Counters                                             : 4
  12-bit up counter                                     : 1
- 2-bit up counter                                      : 1
+ 2-bit up counter                                      : 2
+ 25-bit up counter                                     : 1
 # Accumulators                                         : 1
  15-bit up accumulator                                 : 1
-# Registers                                            : 105
- Flip-Flops                                            : 105
-# Latches                                              : 1
- 2-bit latch                                           : 1
+# Registers                                            : 106
+ Flip-Flops                                            : 106
 # Comparators                                          : 4
  12-bit comparator less                                : 1
  7-bit comparator lessequal                            : 1
@@ -446,7 +458,7 @@ Mapping all equations...
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <U1/U2/SSsample_0> in Unit <SigGenTop> is equivalent to the following FF/Latch, which will be removed : <U1/U4/SSsample_0> 
 INFO:Xst:2261 - The FF/Latch <U1/U2/SSsample_1> in Unit <SigGenTop> is equivalent to the following FF/Latch, which will be removed : <U1/U4/SSsample_1> 
-Found area constraint ratio of 100 (+ 5) on block SigGenTop, actual ratio is 16.
+Found area constraint ratio of 100 (+ 5) on block SigGenTop, actual ratio is 20.
 
 Final Macro Processing ...
 
@@ -454,8 +466,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 137
- Flip-Flops                                            : 137
+# Registers                                            : 165
+ Flip-Flops                                            : 165
 
 =========================================================================
 
@@ -484,29 +496,28 @@ Design Statistics
 # IOs                              : 28
 
 Cell Usage :
-# BELS                             : 478
+# BELS                             : 571
 #      GND                         : 2
-#      INV                         : 3
-#      LUT1                        : 7
-#      LUT2                        : 61
-#      LUT2_L                      : 1
-#      LUT3                        : 76
+#      INV                         : 5
+#      LUT1                        : 32
+#      LUT2                        : 82
+#      LUT2_L                      : 2
+#      LUT3                        : 74
 #      LUT3_D                      : 1
-#      LUT3_L                      : 3
-#      LUT4                        : 117
+#      LUT3_L                      : 1
+#      LUT4                        : 110
 #      LUT4_D                      : 4
-#      LUT4_L                      : 2
+#      LUT4_L                      : 1
 #      MULT_AND                    : 9
-#      MUXCY                       : 87
+#      MUXCY                       : 118
 #      MUXF5                       : 22
 #      VCC                         : 2
-#      XORCY                       : 81
-# FlipFlops/Latches                : 139
-#      FDC                         : 31
-#      FDCE                        : 102
+#      XORCY                       : 106
+# FlipFlops/Latches                : 165
+#      FDC                         : 55
+#      FDCE                        : 105
 #      FDE                         : 1
-#      FDP                         : 3
-#      LD                          : 2
+#      FDP                         : 4
 # RAMS                             : 2
 #      RAMB16_S4_S4                : 2
 # Clock Buffers                    : 1
@@ -521,9 +532,9 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-4 
 
- Number of Slices:                      153  out of    960    15%  
- Number of Slice Flip Flops:            138  out of   1920     7%  
- Number of 4 input LUTs:                275  out of   1920    14%  
+ Number of Slices:                      174  out of    960    18%  
+ Number of Slice Flip Flops:            164  out of   1920     8%  
+ Number of 4 input LUTs:                312  out of   1920    16%  
  Number of IOs:                          28
  Number of bonded IOBs:                  28  out of     83    33%  
     IOB Flip Flops:                       1
@@ -551,13 +562,10 @@ Clock Information:
 -----------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                                           | Load  |
 -----------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
-U1/DispBTNOut(U1/U6/BTNout1:O)     | NONE(*)(U1/U7/DispCount_0)                                                                                                      | 2     |
-Mclk                               | BUFGP                                                                                                                           | 139   |
+Mclk                               | BUFGP                                                                                                                           | 153   |
+U1/U8/Clk1_D                       | NONE(U1/U5/DispCount_1)                                                                                                         | 14    |
 U3/SinusDec/N1                     | NONE(U3/SinusDec/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_init.ram/dpram.dp4x4.ram)| 2     |
 -----------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
-(*) This 1 clock signal(s) are generated by combinatorial logic,
-and XST is not able to identify which are the primary clock signals.
-Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -565,15 +573,15 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-Reset                              | IBUF                   | 136   |
+Reset                              | IBUF                   | 164   |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 7.556ns (Maximum Frequency: 132.345MHz)
-   Minimum input arrival time before clock: 5.892ns
+   Minimum period: 5.994ns (Maximum Frequency: 166.833MHz)
+   Minimum input arrival time before clock: 5.901ns
    Maximum output required time after clock: 39.498ns
    Maximum combinational path delay: No path found
 
@@ -582,59 +590,81 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'U1/DispBTNOut'
-  Clock period: 3.159ns (frequency: 316.556MHz)
-  Total number of paths / destination ports: 3 / 2
--------------------------------------------------------------------------
-Delay:               3.159ns (Levels of Logic = 1)
-  Source:            U1/U7/DispCount_0 (LATCH)
-  Destination:       U1/U7/DispCount_0 (LATCH)
-  Source Clock:      U1/DispBTNOut falling
-  Destination Clock: U1/DispBTNOut falling
-
-  Data Path: U1/U7/DispCount_0 to U1/U7/DispCount_0
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     LD:G->Q              17   0.676   1.051  U1/U7/DispCount_0 (U1/U7/DispCount_0)
-     INV:I->O              1   0.704   0.420  U1/U7/Madd_DispCount_add0000_xor<0>11_INV_0 (U1/U7/DispCount_add0000<0>)
-     LD:D                      0.308          U1/U7/DispCount_0
-    ----------------------------------------
-    Total                      3.159ns (1.688ns logic, 1.471ns route)
-                                       (53.4% logic, 46.6% route)
-
-=========================================================================
 Timing constraint: Default period analysis for Clock 'Mclk'
-  Clock period: 7.556ns (frequency: 132.345MHz)
-  Total number of paths / destination ports: 1664 / 246
+  Clock period: 5.994ns (frequency: 166.833MHz)
+  Total number of paths / destination ports: 2168 / 264
 -------------------------------------------------------------------------
-Delay:               7.556ns (Levels of Logic = 6)
-  Source:            U1/U4/AmplVal_3 (FF)
-  Destination:       U1/U5/cat_1 (FF)
+Delay:               5.994ns (Levels of Logic = 26)
+  Source:            U1/U8/Cnt1_1 (FF)
+  Destination:       U1/U8/Cnt1_24 (FF)
   Source Clock:      Mclk rising
   Destination Clock: Mclk rising
 
-  Data Path: U1/U4/AmplVal_3 to U1/U5/cat_1
+  Data Path: U1/U8/Cnt1_1 to U1/U8/Cnt1_24
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            16   0.591   1.038  U1/U4/AmplVal_3 (U1/U4/AmplVal_3)
-     LUT4:I3->O            1   0.704   0.455  U1/U7/Mmux_DispOut161 (U1/DispOut<3>)
-     LUT3:I2->O            1   0.704   0.000  U1/U5/Mmux_DataN_43 (U1/U5/Mmux_DataN_43)
-     MUXF5:I0->O          21   0.321   1.207  U1/U5/Mmux_DataN_2_f5_2 (U1/U5/DataN<3>)
-     LUT2:I1->O            1   0.704   0.000  U1/U5/CatInt<1>_SW0_F (N108)
-     MUXF5:I0->O           1   0.321   0.499  U1/U5/CatInt<1>_SW0 (N17)
-     LUT3:I1->O            1   0.704   0.000  U1/U5/CatInt<1> (U1/U5/CatInt<1>)
-     FDC:D                     0.308          U1/U5/cat_1
+     FDC:C->Q              2   0.591   0.622  U1/U8/Cnt1_1 (U1/U8/Cnt1_1)
+     LUT1:I0->O            1   0.704   0.000  U1/U8/Mcount_Cnt1_cy<1>_rt (U1/U8/Mcount_Cnt1_cy<1>_rt)
+     MUXCY:S->O            1   0.464   0.000  U1/U8/Mcount_Cnt1_cy<1> (U1/U8/Mcount_Cnt1_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<2> (U1/U8/Mcount_Cnt1_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<3> (U1/U8/Mcount_Cnt1_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<4> (U1/U8/Mcount_Cnt1_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<5> (U1/U8/Mcount_Cnt1_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<6> (U1/U8/Mcount_Cnt1_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<7> (U1/U8/Mcount_Cnt1_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<8> (U1/U8/Mcount_Cnt1_cy<8>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<9> (U1/U8/Mcount_Cnt1_cy<9>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<10> (U1/U8/Mcount_Cnt1_cy<10>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<11> (U1/U8/Mcount_Cnt1_cy<11>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<12> (U1/U8/Mcount_Cnt1_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<13> (U1/U8/Mcount_Cnt1_cy<13>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<14> (U1/U8/Mcount_Cnt1_cy<14>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<15> (U1/U8/Mcount_Cnt1_cy<15>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<16> (U1/U8/Mcount_Cnt1_cy<16>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<17> (U1/U8/Mcount_Cnt1_cy<17>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<18> (U1/U8/Mcount_Cnt1_cy<18>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<19> (U1/U8/Mcount_Cnt1_cy<19>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<20> (U1/U8/Mcount_Cnt1_cy<20>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<21> (U1/U8/Mcount_Cnt1_cy<21>)
+     MUXCY:CI->O           1   0.059   0.000  U1/U8/Mcount_Cnt1_cy<22> (U1/U8/Mcount_Cnt1_cy<22>)
+     MUXCY:CI->O           0   0.059   0.000  U1/U8/Mcount_Cnt1_cy<23> (U1/U8/Mcount_Cnt1_cy<23>)
+     XORCY:CI->O           1   0.804   0.499  U1/U8/Mcount_Cnt1_xor<24> (Result<24>)
+     LUT2:I1->O            1   0.704   0.000  U1/U8/Mcount_Cnt1_eqn_241 (U1/U8/Mcount_Cnt1_eqn_24)
+     FDC:D                     0.308          U1/U8/Cnt1_24
     ----------------------------------------
-    Total                      7.556ns (4.357ns logic, 3.199ns route)
-                                       (57.7% logic, 42.3% route)
+    Total                      5.994ns (4.873ns logic, 1.121ns route)
+                                       (81.3% logic, 18.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'U1/U8/Clk1_D'
+  Clock period: 5.271ns (frequency: 189.717MHz)
+  Total number of paths / destination ports: 171 / 13
+-------------------------------------------------------------------------
+Delay:               5.271ns (Levels of Logic = 3)
+  Source:            U1/U5/DispCount_0 (FF)
+  Destination:       U1/U5/cat_6 (FF)
+  Source Clock:      U1/U8/Clk1_D rising
+  Destination Clock: U1/U8/Clk1_D rising
+
+  Data Path: U1/U5/DispCount_0 to U1/U5/cat_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             13   0.591   0.983  U1/U5/DispCount_0 (U1/U5/DispCount_0)
+     MUXF5:S->O            1   0.739   0.499  U1/U5/Mmux_DataN_41 (U1/U5/Mmux_DataN_41)
+     LUT3:I1->O            7   0.704   0.708  U1/U5/Mmux_DataN_2_f5_01 (U1/U5/DataN<1>)
+     MUXF5:S->O            1   0.739   0.000  U1/U5/CatInt<5> (U1/U5/CatInt<5>)
+     FDC:D                     0.308          U1/U5/cat_5
+    ----------------------------------------
+    Total                      5.271ns (3.081ns logic, 2.190ns route)
+                                       (58.5% logic, 41.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Mclk'
   Total number of paths / destination ports: 57 / 57
 -------------------------------------------------------------------------
-Offset:              5.892ns (Levels of Logic = 3)
+Offset:              5.901ns (Levels of Logic = 3)
   Source:            Reset (PAD)
   Destination:       U1/U4/AmplVal_7 (FF)
   Destination Clock: Mclk rising
@@ -643,17 +673,17 @@ Offset:              5.892ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           143   1.218   1.472  Reset_IBUF (Reset_IBUF)
+     IBUF:I->O           171   1.218   1.481  Reset_IBUF (Reset_IBUF)
      LUT4_D:I0->O          2   0.704   0.482  U1/U4/AmplEn111 (U1/U4/AmplEn111)
      LUT4:I2->O            8   0.704   0.757  U1/U4/AmplEn2 (U1/U4/AmplEn)
      FDCE:CE                   0.555          U1/U4/AmplVal_0
     ----------------------------------------
-    Total                      5.892ns (3.181ns logic, 2.711ns route)
-                                       (54.0% logic, 46.0% route)
+    Total                      5.901ns (3.181ns logic, 2.720ns route)
+                                       (53.9% logic, 46.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'Mclk'
-  Total number of paths / destination ports: 1183772327 / 21
+  Total number of paths / destination ports: 1183772315 / 9
 -------------------------------------------------------------------------
 Offset:              39.498ns (Levels of Logic = 40)
   Source:            U3/SinusDec/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_init.ram/dpram.dp4x4.ram (RAM)
@@ -710,16 +740,35 @@ Offset:              39.498ns (Levels of Logic = 40)
                                        (73.1% logic, 26.9% route)
 
 =========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/U8/Clk1_D'
+  Total number of paths / destination ports: 12 / 12
+-------------------------------------------------------------------------
+Offset:              4.283ns (Levels of Logic = 1)
+  Source:            U1/U5/an_3 (FF)
+  Destination:       an<3> (PAD)
+  Source Clock:      U1/U8/Clk1_D rising
+
+  Data Path: U1/U5/an_3 to an<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              1   0.591   0.420  U1/U5/an_3 (U1/U5/an_3)
+     OBUF:I->O                 3.272          an_3_OBUF (an<3>)
+    ----------------------------------------
+    Total                      4.283ns (3.863ns logic, 0.420ns route)
+                                       (90.2% logic, 9.8% route)
+
+=========================================================================
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.78 secs
+Total CPU time to Xst completion: 8.02 secs
  
 --> 
 
-Total memory usage is 323156 kilobytes
+Total memory usage is 323172 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    3 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
 Number of infos    :    3 (   0 filtered)
 

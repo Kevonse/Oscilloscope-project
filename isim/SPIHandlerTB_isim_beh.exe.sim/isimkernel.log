@@ -1,29 +1,29 @@
 Command line:
    SPIHandlerTB_isim_beh.exe
      -simmode  gui
-     -simrunnum  1
-     -socket  51746
+     -simrunnum  0
+     -socket  51608
 
-Wed Jun 15 09:40:43 2016
+Thu Jun 16 13:42:56 2016
 
 
  Elaboration Time: 0.03125 sec
 
- Current Memory Usage: 844.227 Meg
+ Current Memory Usage: 840.077 Meg
 
- Total Signals          : 42
- Total Nets             : 121
- Total Signal Drivers   : 33
+ Total Signals          : 41
+ Total Nets             : 113
+ Total Signal Drivers   : 32
  Total Blocks           : 3
  Total Primitive Blocks : 2
- Total Processes        : 21
+ Total Processes        : 20
  Total Traceable Variables  : 9
- Total Scalar Nets and Variables : 482
-Total Line Count : 179
+ Total Scalar Nets and Variables : 474
+Total Line Count : 176
 
- Total Simulation Time: 0.1875 sec
+ Total Simulation Time: 0.03125 sec
 
- Current Memory Usage: 686.94 Meg
+ Current Memory Usage: 840.077 Meg
 
-Wed Jun 15 09:42:40 2016
+Thu Jun 16 13:43:11 2016
 

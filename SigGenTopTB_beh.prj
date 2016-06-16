@@ -1,3 +1,4 @@
+vhdl work "ipcore_dir/SinusLUT.vhd"
 vhdl work "SPIPHandler.vhd"
 vhdl work "shiftreg.vhd"
 vhdl work "SigGenDatapath.vhd"

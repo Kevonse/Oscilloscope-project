@@ -59,7 +59,7 @@ component SigGenControl is
 			  LED : out STD_LOGIC_VECTOR (7 downto 0);
            SigEn : out  STD_LOGIC;
 			  cat :  out std_logic_vector(7 downto 0);  -- Common cathodes
-           an :  out std_logic_vector(3 downto 0); -- Common Anodes
+			  an :  out std_logic_vector(3 downto 0); -- Common Anodes
 			  DispSelect : in STD_LOGIC;
            MISO : out  STD_LOGIC);
 end component;

@@ -71,7 +71,7 @@ begin
 			if reset = '1' then 	
 				SPIdat <= x"00";
 			elsif Mclk'event and Mclk = '1' then
-				If SSsample = "01" then --Shiftreg works with "11" but SigGenTop does not!
+				If SSsample = "01" then
 					SPIdat <= shiftval;
 				end if;
 			end if;
@@ -80,7 +80,7 @@ begin
 	SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
 		begin
 			if reset = '1' then 
-				SSsample <= "11"; --changed from previous "11"
+				SSsample <= "11";
 			elsif Mclk'event and Mclk = '1' then --On rising edge Mclk
 				SSsample <= SSsample(0) & SS ; --Left shift signal value
 			end if;	

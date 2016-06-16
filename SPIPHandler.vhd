@@ -74,14 +74,6 @@ begin
 	
 end process;
 
---DataInReg: process (Reset, Mclk) --Register has byte transferred into shiftreg from SPI transmission
---begin
---  if Reset = '1' then ByteIn <= x"00"; --reset signal holding incoming byte
---  elsif Mclk'event and Mclk = '1' then
---      ByteIn <= DataIn; --Signal holding transmitted byte is set.
---    end if;
---end process;
-
 SyncReg: process (Reset, Mclk) --Register holds sync byte. 1st byte.
 begin
 	if Reset = '1' then SyncVal <= x"00";
@@ -186,9 +178,6 @@ begin
 	end if;
 end process;
 
-
-
-
 StateReg: process (Reset, Mclk)--Register hold current state
 begin
 	if Reset = '1' then 
@@ -197,7 +186,6 @@ begin
 		State <= nState; --Moving on to next state
   end if;
 end process;
-
 
 StateDec: process (Reset, State, AdrVal, Package_loaded, ByteTransfCompl, DataIn)--statemachine , 
 begin
@@ -274,12 +262,6 @@ end process;
 		Ampl <= AmplVal;--Amplitude output is assigned
 		Freq <= FreqVal;--Frequency output is assigned
 		SigEn <= Enable;
-		--LED <= ByteIn;
-		--LED(7) <= Enable;
-		--LED <= SyncVal; --Value on LED: 11010110, equal to checksum of last byte sent
-		--LED <= DataIn;
-		--LED <= "000000" & ShapeVal; --Value on LED: 00000000/00000001/00000010 -- WTF?!
-		--LED <= syncval; --Value on LED: 00000000/01111111
 		LED <= FreqVal;
 
 		

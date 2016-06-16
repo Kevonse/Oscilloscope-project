@@ -17,6 +17,8 @@ signal DataN: std_logic_vector (3 downto 0);
 signal CatInt, CatData, CatSign: std_logic_vector (7 downto 0);
 signal AnInt: std_logic_vector (3 downto 0);
 
+
+
 begin
 	
 

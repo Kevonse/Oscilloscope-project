@@ -30,7 +30,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity DispMux is
-    Port ( ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
+    Port ( 
+			  Reset : in Std_logic;
+			  Mclk : in std_logic;
+			  ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
            AmplDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            FreqDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            --StartPoint : in  STD_LOGIC_VECTOR (19 downto 0);
@@ -52,8 +55,12 @@ begin
 
 end process;
 
-DispCountDec: process(Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp)
+DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp)
 	begin
+	
+	If Reset = '1' then
+		DispCount <= 0;
+	elsif Mclk'event and Mclk = '1' then
 	
 	If DispCount > 3 then
 		DispCount <= 0;
@@ -61,6 +68,7 @@ DispCountDec: process(Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp)
 		DispCount <= DispCount +1;
 	else
 		DispCount <= DispCount;
+	end if;
 	end if;
 	
 	
