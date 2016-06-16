@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -38,6 +39,7 @@ entity SPIHandler is
            Shape : out  STD_LOGIC_VECTOR (1 downto 0);
            Ampl : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
+			  OK_cnt : out STD_LOGIC_VECTOR (19 downto 0);
            SigEn : out  STD_LOGIC);
 end SPIHandler;
 
@@ -54,9 +56,24 @@ type StateType is ( Idle, AdrS, DataS, CheckSumEvalS, SyncS);--States indicating
 signal State, nState: StateType; --Current state and next state
 signal Package_loaded : std_logic; --Signal goes high when checksum byte is loaded
 signal Pack_load_sample : std_logic_vector(1 downto 0);
-signal Enable : std_logic; --Signal holding value for output SigEn 
+signal Enable : std_logic; --Signal holding value for output SigEn
+--signal OK_cnt : integer range 0 to 65535; --4 hexa digits
+signal OK_pack_cnt : STD_LOGIC_VECTOR(19 downto 0) := X"00000";
 
 begin
+
+OK_counter : process(Reset, Mclk)
+begin
+	if Reset = '1' then
+		OK_pack_cnt <= X"00000";
+	elsif Mclk'event and Mclk = '1' then
+		if Package_Ok = '1' then
+			OK_pack_cnt <= std_logic_vector(unsigned(OK_pack_cnt) + 1);
+		else
+			OK_pack_cnt <= OK_pack_cnt;
+		end if;
+	end if;
+end process;
 
 SS_Sampler : Process(Reset, Mclk) --Register holding sample rate of SCK
 begin
@@ -262,6 +279,8 @@ end process;
 		Ampl <= AmplVal;--Amplitude output is assigned
 		Freq <= FreqVal;--Frequency output is assigned
 		SigEn <= Enable;
+		OK_cnt <= OK_pack_cnt;
+		
 		LED <= FreqVal;
 
 		

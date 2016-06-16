@@ -36,6 +36,7 @@ entity DispMux is
 			  ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
            AmplDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            FreqDisp : in  STD_LOGIC_VECTOR (7 downto 0);
+			  OK_cnt : in STD_LOGIC_VECTOR (19 downto 0);
            --StartPoint : in  STD_LOGIC_VECTOR (19 downto 0);
            DispOut : out  STD_LOGIC_VECTOR (19 downto 0);
            Switch : in  STD_LOGIC);
@@ -45,7 +46,7 @@ end DispMux;
 
 architecture Behavioral of DispMux is
 
-signal DispCount: integer range 0 to 3;
+signal DispCount: integer range 0 to 4;
 
 begin
 
@@ -55,20 +56,19 @@ begin
 
 end process;
 
-DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp)
+DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp, OK_cnt)
 	begin
 	
-	If Reset = '1' then
+	if Reset = '1' then
 		DispCount <= 0;
 	elsif Mclk'event and Mclk = '1' then
-	
-	If DispCount > 3 then
-		DispCount <= 0;
-	elsif Switch = '1' then
-		DispCount <= DispCount +1;
-	else
-		DispCount <= DispCount;
-	end if;
+		If DispCount > 4 then
+			DispCount <= 0;
+		elsif Switch = '1' then
+			DispCount <= DispCount +1;
+		else
+			DispCount <= DispCount;
+		end if;
 	end if;
 	
 	
@@ -83,6 +83,8 @@ DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp
 			DispOut <= "000010100000" & AmplDisp;
 	    when 3 => 
 			DispOut <= "000011110000" & FreqDisp;
+		 when 4 =>
+			DispOut <= OK_cnt;
 		 when others => 
 			DispOut <= x"01234";
      end case;

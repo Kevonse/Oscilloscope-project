@@ -79,6 +79,7 @@ component DispMux is
 			  ShapeDisp : in  STD_LOGIC_VECTOR (1 downto 0);
            AmplDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            FreqDisp : in  STD_LOGIC_VECTOR (7 downto 0);
+			  OK_cnt : in STD_LOGIC_VECTOR (19 downto 0);
            --StartPoint : in  STD_LOGIC_VECTOR (19 downto 0);
            DispOut : out  STD_LOGIC_VECTOR (19 downto 0);
            Switch : in  STD_LOGIC);
@@ -103,11 +104,13 @@ component SPIHandler is
            Shape : out  STD_LOGIC_VECTOR (1 downto 0);
            Ampl : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
+			  OK_cnt : out STD_LOGIC_VECTOR (19 downto 0);
            SigEn : out  STD_LOGIC);
 end component;
 
 Signal SregIn : std_logic_vector(7 downto 0);
 signal Clk1 : Std_logic;
+signal OK_cnt_conn : STD_LOGIC_VECTOR (19 downto 0);
 
 begin
 --led <= sregin;
@@ -128,6 +131,7 @@ U4 : SPIHandler port map(Reset => Reset,
 								 Freq => FreqVal,
 								 SigEn => SigEn, 
 								 SS => SS,
+								 OK_cnt => OK_cnt_conn,
 							    LED => LED);
 								 
 U5 : SevenSeg5 Port map(Reset => Reset, 
@@ -147,6 +151,7 @@ U7 : DispMux Port map (Reset => Reset,
 							  AmplDisp => AmplVal,
 							  FreqDisp => FreqVal,
 							  Switch => DispBTNOut,
+							  OK_cnt => OK_cnt_conn,
 							  DispOut => DispOut);
 							  
 U8 : DivClk port map (Reset => Reset,

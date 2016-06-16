@@ -45,11 +45,11 @@ Setup/Hold to clock Mclk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-BTN0        |    0.337(R)|    0.907(R)|Mclk_BUFGP        |   0.000|
-MOSI        |    0.563(R)|    0.733(R)|Mclk_BUFGP        |   0.000|
-Reset       |    4.356(R)|    0.203(R)|Mclk_BUFGP        |   0.000|
-SCK         |    0.324(R)|    0.926(R)|Mclk_BUFGP        |   0.000|
-SS          |    0.870(R)|    0.488(R)|Mclk_BUFGP        |   0.000|
+BTN0        |    0.488(R)|    0.786(R)|Mclk_BUFGP        |   0.000|
+MOSI        |    1.036(R)|    0.351(R)|Mclk_BUFGP        |   0.000|
+Reset       |    4.376(R)|    0.064(R)|Mclk_BUFGP        |   0.000|
+SCK         |    0.288(R)|    0.955(R)|Mclk_BUFGP        |   0.000|
+SS          |    1.447(R)|    0.024(R)|Mclk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock Mclk to Pad
@@ -57,15 +57,15 @@ Clock Mclk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-LED<0>      |    8.277(R)|Mclk_BUFGP        |   0.000|
-LED<1>      |    9.094(R)|Mclk_BUFGP        |   0.000|
-LED<2>      |    8.017(R)|Mclk_BUFGP        |   0.000|
-LED<3>      |    8.152(R)|Mclk_BUFGP        |   0.000|
-LED<4>      |    7.858(R)|Mclk_BUFGP        |   0.000|
-LED<5>      |    7.976(R)|Mclk_BUFGP        |   0.000|
-LED<6>      |    8.699(R)|Mclk_BUFGP        |   0.000|
-LED<7>      |    7.983(R)|Mclk_BUFGP        |   0.000|
-PWMOut      |   45.448(R)|Mclk_BUFGP        |   0.000|
+LED<0>      |    8.736(R)|Mclk_BUFGP        |   0.000|
+LED<1>      |    8.696(R)|Mclk_BUFGP        |   0.000|
+LED<2>      |    8.225(R)|Mclk_BUFGP        |   0.000|
+LED<3>      |    7.865(R)|Mclk_BUFGP        |   0.000|
+LED<4>      |    8.432(R)|Mclk_BUFGP        |   0.000|
+LED<5>      |    8.654(R)|Mclk_BUFGP        |   0.000|
+LED<6>      |    8.389(R)|Mclk_BUFGP        |   0.000|
+LED<7>      |    8.392(R)|Mclk_BUFGP        |   0.000|
+PWMOut      |   43.512(R)|Mclk_BUFGP        |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock Mclk
@@ -73,11 +73,11 @@ Clock to Setup on destination clock Mclk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Mclk           |    5.212|         |         |         |
+Mclk           |    5.243|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Thu Jun 16 14:25:25 2016 
+Analysis completed Thu Jun 16 15:02:00 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
