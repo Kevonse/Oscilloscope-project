@@ -1,72 +1,72 @@
 V3 52
 FL C:/Users/Skrum_000/Desktop/shiftreg.vhd 2016/06/08.09:30:11 P.20131013
 FL C:/Users/Skrum_000/Downloads/BTNdb.vhd 2016/06/15.16:41:30 P.20131013
-EN work/BTNdb 1466082092 FL C:/Users/Skrum_000/Downloads/BTNdb.vhd \
+EN work/BTNdb 1466088471 FL C:/Users/Skrum_000/Downloads/BTNdb.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/BTNdb/Behavioral 1466082093 \
-      FL C:/Users/Skrum_000/Downloads/BTNdb.vhd EN work/BTNdb 1466082092
-FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" 2016/06/16.15:01:20 P.20131013
-EN work/DispMux 1466082094 \
+AR work/BTNdb/Behavioral 1466088472 \
+      FL C:/Users/Skrum_000/Downloads/BTNdb.vhd EN work/BTNdb 1466088471
+FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" 2016/06/16.15:23:35 P.20131013
+EN work/DispMux 1466083429 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/DispMux/Behavioral 1466082095 \
+AR work/DispMux/Behavioral 1466083430 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" \
-      EN work/DispMux 1466082094
+      EN work/DispMux 1466083429
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" 2009/06/04.17:39:56 P.20131013
-EN work/DivClk 1466082096 \
+EN work/DivClk 1466083431 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/DivClk/DivClk_arch 1466082097 \
+AR work/DivClk/DivClk_arch 1466083432 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" \
-      EN work/DivClk 1466082096
+      EN work/DivClk 1466083431
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/ipcore_dir/SinusLUT.vhd" 2016/06/15.15:50:43 P.20131013
-EN work/SinusLUT 1466082084 \
+EN work/SinusLUT 1466088463 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/ipcore_dir/SinusLUT.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SinusLUT/SinusLUT_a 1466082085 \
+AR work/SinusLUT/SinusLUT_a 1466088464 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/ipcore_dir/SinusLUT.vhd" \
-      EN work/SinusLUT 1466082084
+      EN work/SinusLUT 1466088463
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" 2016/06/16.13:05:36 P.20131013
-EN work/SevenSeg5 1466082090 \
+EN work/SevenSeg5 1466088469 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/SevenSeg5/SevenSeg_arch 1466082091 \
+AR work/SevenSeg5/SevenSeg_arch 1466088470 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" \
-      EN work/SevenSeg5 1466082090
+      EN work/SevenSeg5 1466088469
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" 2016/06/16.13:55:32 P.20131013
-EN work/shiftreg 1466082086 \
+EN work/shiftreg 1466088465 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/shiftreg/Behavioral 1466082087 \
+AR work/shiftreg/Behavioral 1466088466 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" \
-      EN work/shiftreg 1466082086
+      EN work/shiftreg 1466088465
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" 2016/06/16.14:56:12 P.20131013
-EN work/SigGenControl 1466082098 \
+EN work/SigGenControl 1466083433 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SigGenControl/Behavioral 1466082099 \
+AR work/SigGenControl/Behavioral 1466083434 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" \
-      EN work/SigGenControl 1466082098 CP shiftreg CP SPIHandler CP SevenSeg5 \
+      EN work/SigGenControl 1466083433 CP shiftreg CP SPIHandler CP SevenSeg5 \
       CP BTNdb CP DispMux CP DivClk
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" 2016/06/15.16:08:20 P.20131013
-EN work/SigGenDatapath 1466082100 \
+EN work/SigGenDatapath 1466083435 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/SigGenDatapath/Behavioral 1466082101 \
+AR work/SigGenDatapath/Behavioral 1466083436 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" \
-      EN work/SigGenDatapath 1466082100 CP FreqCnt CP nSigCnt_int CP work/SinusLUT \
+      EN work/SigGenDatapath 1466083435 CP FreqCnt CP nSigCnt_int CP work/SinusLUT \
       CP PWMwrap CP SigSquare CP SigSaw CP Sig CP PWM CP PWMout
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" 2016/06/16.14:22:55 P.20131013
-EN work/SigGenTop 1466082102 \
+EN work/SigGenTop 1466083437 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/SigGenTop/Behavioral 1466082103 \
+AR work/SigGenTop/Behavioral 1466083438 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" \
-      EN work/SigGenTop 1466082102 CP SigGenControl CP SigGenDatapath
+      EN work/SigGenTop 1466083437 CP SigGenControl CP SigGenDatapath
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" 2016/06/11.21:05:46 P.20131013
 EN work/SigGenTopTB 0 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" \
@@ -75,9 +75,9 @@ AR work/SigGenTopTB/behavior 0 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" \
       EN work/SigGenTopTB 0 CP SigGenTop
 FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" 2016/06/16.14:58:43 P.20131013
-EN work/SPIHandler 1466082088 \
+EN work/SPIHandler 1466088467 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-AR work/SPIHandler/Behavioral 1466082089 \
+AR work/SPIHandler/Behavioral 1466088468 \
       FL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" \
-      EN work/SPIHandler 1466082088
+      EN work/SPIHandler 1466088467

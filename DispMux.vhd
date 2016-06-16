@@ -50,11 +50,6 @@ signal DispCount: integer range 0 to 4;
 
 begin
 
-Counter : Process(Switch)
-
-begin
-
-end process;
 
 DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp, OK_cnt)
 	begin
@@ -78,7 +73,7 @@ DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp
 			--StartPoint <= x"F0123"; -- Value for StartPoint
 		   DispOut <= x"F0123";        
 	    when 1 => 
-			DispOut <= "000010100000000000" & ShapeDisp;
+			DispOut <= "000001010000000000" & ShapeDisp;
 	    when 2 => 
 			DispOut <= "000010100000" & AmplDisp;
 	    when 3 => 
