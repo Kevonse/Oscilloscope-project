@@ -1,0 +1,29 @@
+Command line:
+   SigGenControlTB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  54593
+
+Fri Jun 17 13:34:40 2016
+
+
+ Elaboration Time: 0.03125 sec
+
+ Current Memory Usage: 840.331 Meg
+
+ Total Signals          : 114
+ Total Nets             : 274
+ Total Signal Drivers   : 62
+ Total Blocks           : 12
+ Total Primitive Blocks : 10
+ Total Processes        : 43
+ Total Traceable Variables  : 17
+ Total Scalar Nets and Variables : 788
+Total Line Count : 804
+
+ Total Simulation Time: 0.0625 sec
+
+ Current Memory Usage: 683.045 Meg
+
+Fri Jun 17 13:37:49 2016
+

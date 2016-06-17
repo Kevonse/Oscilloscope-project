@@ -1,21 +1,21 @@
 AR siggendatapath behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" sub00/vhpl03 1466156617
 EN siggentoptb NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTopTB.vhd" sub00/vhpl10 1465672311
 EN siggendatapath NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenDatapath.vhd" sub00/vhpl02 1466156616
-EN sevenseg5 NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" sub00/vhpl15 1466156606
-AR sevenseg5 sevenseg_arch "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" sub00/vhpl16 1466156607
-EN siggencontrol NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" sub00/vhpl06 1466156614
-EN shiftreg NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" sub00/vhpl00 1466156602
+EN sevenseg5 NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" sub00/vhpl15 1466163274
+AR sevenseg5 sevenseg_arch "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" sub00/vhpl16 1466163275
+EN siggencontrol NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" sub00/vhpl06 1466163282
+EN shiftreg NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" sub00/vhpl00 1466163270
 EN siggentop NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" sub00/vhpl08 1466156618
-AR shiftreg behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" sub00/vhpl01 1466156603
+AR shiftreg behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" sub00/vhpl01 1466163271
 AR siggentop behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.vhd" sub00/vhpl09 1466156619
-AR spihandler behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl05 1466156605
-AR btndb behavioral C:/Users/Skrum_000/Downloads/BTNdb.vhd sub00/vhpl18 1466156609
+AR spihandler behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl05 1466163273
+AR btndb behavioral C:/Users/Skrum_000/Downloads/BTNdb.vhd sub00/vhpl18 1466163277
 AR sinuslut sinuslut_a "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/ipcore_dir/SinusLUT.vhd" sub00/vhpl12 1466156601
-AR siggencontrol behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" sub00/vhpl07 1466156615
-EN dispmux NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" sub00/vhpl13 1466156610
-EN spihandler NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl04 1466156604
-EN divclk NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" sub00/vhpl19 1466156612
-EN btndb NULL C:/Users/Skrum_000/Downloads/BTNdb.vhd sub00/vhpl17 1466156608
+AR siggencontrol behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" sub00/vhpl07 1466163283
+EN dispmux NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" sub00/vhpl13 1466163278
+EN spihandler NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" sub00/vhpl04 1466163272
+EN divclk NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" sub00/vhpl19 1466163280
+EN btndb NULL C:/Users/Skrum_000/Downloads/BTNdb.vhd sub00/vhpl17 1466163276
 EN sinuslut NULL "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/ipcore_dir/SinusLUT.vhd" sub00/vhpl11 1466156600
-AR divclk divclk_arch "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" sub00/vhpl20 1466156613
-AR dispmux behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" sub00/vhpl14 1466156611
+AR divclk divclk_arch "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" sub00/vhpl20 1466163281
+AR dispmux behavioral "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" sub00/vhpl14 1466163279

@@ -29,6 +29,9 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="DispMux.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="DispMux.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="DispMux.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="DispMuxTB_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="DispMuxTB_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="DispMuxTB_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SPIHandler.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="SPIHandler.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="SPIHandler.xst"/>
@@ -38,6 +41,7 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenControl.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="SigGenControl.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="SigGenControl.xst"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="SigGenControlTB_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenDatapath.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="SigGenDatapath.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="SigGenDatapath.xst"/>
@@ -66,9 +70,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB.prj"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="SigGenTopTB.syr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="SigGenTopTB.xst"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="SigGenTopTB_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="SigGenTopTB_isim_beh.wdb"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB_stx_beh.prj"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="SigGenTopTB_xst.xrpt"/>
@@ -135,28 +137,19 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1466160645" xil_pn:in_ck="-7014865691551851676" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1466160644">
+    <transform xil_pn:end_ts="1466165029" xil_pn:in_ck="-1130948374843433256" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1466165029">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="../../../../../Downloads/BTNdb.vhd"/>
-      <outfile xil_pn:name="DatapathTB.vhd"/>
-      <outfile xil_pn:name="DispMux.vhd"/>
-      <outfile xil_pn:name="DivClk.vhd"/>
-      <outfile xil_pn:name="SPIHandlerTB.vhd"/>
-      <outfile xil_pn:name="SPIPHandler.vhd"/>
-      <outfile xil_pn:name="SevenSeg5.vhd"/>
-      <outfile xil_pn:name="SigGenControl.vhd"/>
-      <outfile xil_pn:name="SigGenDatapath.vhd"/>
-      <outfile xil_pn:name="SigGenTop.vhd"/>
-      <outfile xil_pn:name="SigGenTopTB.vhd"/>
-      <outfile xil_pn:name="shiftreg.vhd"/>
-      <outfile xil_pn:name="shiftregTB.vhd"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1466160335" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-4081517098815359012" xil_pn:start_ts="1466160335">
+    <transform xil_pn:end_ts="1466165029" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="541572812774235990" xil_pn:start_ts="1466165029">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1466160335" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-5499411650132818722" xil_pn:start_ts="1466160335">
+    <transform xil_pn:end_ts="1466165029" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="4412812551854106328" xil_pn:start_ts="1466165029">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -166,40 +159,34 @@
       <outfile xil_pn:name="ipcore_dir/SinusLUT.ngc"/>
       <outfile xil_pn:name="ipcore_dir/SinusLUT.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1466160645" xil_pn:in_ck="2758571029371867018" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1466160645">
+    <transform xil_pn:end_ts="1466165030" xil_pn:in_ck="-5305847039510704002" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1466165029">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="../../../../../Downloads/BTNdb.vhd"/>
-      <outfile xil_pn:name="DatapathTB.vhd"/>
-      <outfile xil_pn:name="DispMux.vhd"/>
-      <outfile xil_pn:name="DivClk.vhd"/>
-      <outfile xil_pn:name="SPIHandlerTB.vhd"/>
-      <outfile xil_pn:name="SPIPHandler.vhd"/>
-      <outfile xil_pn:name="SevenSeg5.vhd"/>
-      <outfile xil_pn:name="SigGenControl.vhd"/>
-      <outfile xil_pn:name="SigGenDatapath.vhd"/>
-      <outfile xil_pn:name="SigGenTop.vhd"/>
-      <outfile xil_pn:name="SigGenTopTB.vhd"/>
-      <outfile xil_pn:name="ipcore_dir/SinusLUT.vhd"/>
-      <outfile xil_pn:name="shiftreg.vhd"/>
-      <outfile xil_pn:name="shiftregTB.vhd"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1466160650" xil_pn:in_ck="2758571029371867018" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4363227564727879270" xil_pn:start_ts="1466160645">
+    <transform xil_pn:end_ts="1466165032" xil_pn:in_ck="-5305847039510704002" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-7836531776919568370" xil_pn:start_ts="1466165030">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="SigGenTopTB_beh.prj"/>
-      <outfile xil_pn:name="SigGenTopTB_isim_beh.exe"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1466160650" xil_pn:in_ck="2893822057482606453" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-5784152078313338425" xil_pn:start_ts="1466160650">
+    <transform xil_pn:end_ts="1466165033" xil_pn:in_ck="-610100378464206457" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-1461382896643712965" xil_pn:start_ts="1466165032">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="SigGenTopTB_isim_beh.wdb"/>
-      <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1465906950" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1465906950">
       <status xil_pn:value="SuccessfullyRun"/>

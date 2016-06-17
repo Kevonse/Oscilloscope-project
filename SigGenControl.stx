@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
 
@@ -18,23 +18,33 @@ Total CPU time to Xst completion: 0.10 secs
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/shiftreg.vhd" in Library work.
-Architecture behavioral of Entity shiftreg is up to date.
+Entity <shiftreg> compiled.
+Entity <shiftreg> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SPIPHandler.vhd" in Library work.
-Architecture behavioral of Entity spihandler is up to date.
+Entity <spihandler> compiled.
+Entity <spihandler> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SevenSeg5.vhd" in Library work.
+Architecture sevenseg_arch of Entity sevenseg5 is up to date.
+Compiling vhdl file "C:/Users/Skrum_000/Downloads/BTNdb.vhd" in Library work.
+Architecture behavioral of Entity btndb is up to date.
 Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" in Library work.
 Entity <dispmux> compiled.
-ERROR:HDLParsers:804 - "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" Line 65. Size of concat operation is different than size of the target.
-ERROR:HDLParsers:834 - "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DispMux.vhd" Line 70. Signal DispCount has a multi source.
+Entity <dispmux> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/DivClk.vhd" in Library work.
+Architecture divclk_arch of Entity divclk is up to date.
+Compiling vhdl file "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenControl.vhd" in Library work.
+Entity <siggencontrol> compiled.
+Entity <siggencontrol> (Architecture <behavioral>) compiled.
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.33 secs
  
 --> 
 
-Total memory usage is 259864 kilobytes
+Total memory usage is 267996 kilobytes
 
-Number of errors   :    2 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

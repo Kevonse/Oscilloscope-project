@@ -90,7 +90,7 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 10 ns;	
+      --wait for 10 ns;	
 		Reset <= '1'; --Reset all signals
 		SCK <= '1';
 		SS <= '1';
