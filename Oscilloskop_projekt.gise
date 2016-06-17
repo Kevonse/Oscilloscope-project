@@ -23,6 +23,7 @@
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="BTNdb_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="DatapathTB_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="DatapathTB_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="DispMux.prj"/>
@@ -65,7 +66,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB.prj"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="SigGenTopTB.syr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="SigGenTopTB.xst"/>
-    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="SigGenTopTB_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="SigGenTopTB_isim_beh.wdb"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="SigGenTopTB_stx_beh.prj"/>
@@ -130,17 +131,13 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1466077272" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1466077272">
+    <transform xil_pn:end_ts="1466160019" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1466160019">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1466078178" xil_pn:in_ck="-7014865691551851676" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1466078178">
+    <transform xil_pn:end_ts="1466160645" xil_pn:in_ck="-7014865691551851676" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1466160644">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="../../../../../Downloads/BTNdb.vhd"/>
       <outfile xil_pn:name="DatapathTB.vhd"/>
       <outfile xil_pn:name="DispMux.vhd"/>
@@ -155,28 +152,23 @@
       <outfile xil_pn:name="shiftreg.vhd"/>
       <outfile xil_pn:name="shiftregTB.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1466078180" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-4081517098815359012" xil_pn:start_ts="1466078180">
+    <transform xil_pn:end_ts="1466160335" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-4081517098815359012" xil_pn:start_ts="1466160335">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1466078180" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-5499411650132818722" xil_pn:start_ts="1466078180">
+    <transform xil_pn:end_ts="1466160335" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-5499411650132818722" xil_pn:start_ts="1466160335">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1466077272" xil_pn:in_ck="926961726205324622" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="6046628565668021470" xil_pn:start_ts="1466077272">
+    <transform xil_pn:end_ts="1466160019" xil_pn:in_ck="926961726205324622" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="6046628565668021470" xil_pn:start_ts="1466160019">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ipcore_dir/SinusLUT.ngc"/>
       <outfile xil_pn:name="ipcore_dir/SinusLUT.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1466078180" xil_pn:in_ck="2758571029371867018" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1466078180">
+    <transform xil_pn:end_ts="1466160645" xil_pn:in_ck="2758571029371867018" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1466160645">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="../../../../../Downloads/BTNdb.vhd"/>
       <outfile xil_pn:name="DatapathTB.vhd"/>
       <outfile xil_pn:name="DispMux.vhd"/>
@@ -192,14 +184,9 @@
       <outfile xil_pn:name="shiftreg.vhd"/>
       <outfile xil_pn:name="shiftregTB.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1466078185" xil_pn:in_ck="2758571029371867018" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4363227564727879270" xil_pn:start_ts="1466078180">
+    <transform xil_pn:end_ts="1466160650" xil_pn:in_ck="2758571029371867018" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4363227564727879270" xil_pn:start_ts="1466160645">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="SigGenTopTB_beh.prj"/>
       <outfile xil_pn:name="SigGenTopTB_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -207,12 +194,9 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1466078185" xil_pn:in_ck="3481179690356506236" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-5784152078313338425" xil_pn:start_ts="1466078185">
+    <transform xil_pn:end_ts="1466160650" xil_pn:in_ck="2893822057482606453" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-5784152078313338425" xil_pn:start_ts="1466160650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="SigGenTopTB_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
@@ -251,6 +235,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="SigGenTop.lso"/>
       <outfile xil_pn:name="SigGenTop.ngc"/>
@@ -260,7 +249,6 @@
       <outfile xil_pn:name="SigGenTop.syr"/>
       <outfile xil_pn:name="SigGenTop.xst"/>
       <outfile xil_pn:name="SigGenTopTB.prj"/>
-      <outfile xil_pn:name="SigGenTopTB_beh.prj"/>
       <outfile xil_pn:name="SigGenTopTB_stx_beh.prj"/>
       <outfile xil_pn:name="SigGenTopTB_vhdl.prj"/>
       <outfile xil_pn:name="SigGenTop_vhdl.prj"/>
@@ -278,6 +266,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="SigGenTop.bld"/>
       <outfile xil_pn:name="SigGenTop.ngd"/>

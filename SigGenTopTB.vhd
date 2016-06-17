@@ -47,9 +47,8 @@ ARCHITECTURE behavior OF SigGenTopTB IS
          SS : IN  std_logic;
          MOSI : IN  std_logic;
          PWMOut : OUT  std_logic;
-         LED : OUT  std_logic_vector(7 downto 0);
-         MISO : OUT  std_logic
-        );
+			BTN0 : in STD_LOGIC;
+         LED : OUT  std_logic_vector(7 downto 0));
     END COMPONENT;
     
 
@@ -59,11 +58,11 @@ ARCHITECTURE behavior OF SigGenTopTB IS
    signal SCK : std_logic := '0';
    signal SS : std_logic := '0';
    signal MOSI : std_logic := '0';
+	signal BTN0 : std_logic := '0';
 
  	--Outputs
    signal PWMOut : std_logic;
    signal LED : std_logic_vector(7 downto 0);
-   signal MISO : std_logic;
 
    -- Clock period definitions
    constant Mclk_period : time := 10 ns;
@@ -78,9 +77,8 @@ BEGIN
           SS => SS,
           MOSI => MOSI,
           PWMOut => PWMOut,
-          LED => LED,
-          MISO => MISO
-        );
+			 BTN0 => BTN0,
+          LED => LED);
 
    -- Clock process definitions
    Mclk_process :process
