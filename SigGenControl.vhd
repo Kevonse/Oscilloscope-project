@@ -42,14 +42,13 @@ entity SigGenControl is
            SigEn : out  STD_LOGIC;
 			  DispSelect : in STD_LOGIC;
 			  cat :    out std_logic_vector(7 downto 0);  -- Common cathodes
-           an :     out std_logic_vector(3 downto 0); -- Common Anodes
-           MISO : out  STD_LOGIC);
+           an :     out std_logic_vector(3 downto 0)); -- Common Anodes
 end SigGenControl;
 
 architecture Behavioral of SigGenControl is
 
-signal DispBTNOut : std_logic;
-signal DispOut : std_logic_vector(19 downto 0);
+signal DispBTNOut : std_logic; --Debounce output. 1 if button is pressed, 0 if not.
+signal DispOut : std_logic_vector(19 downto 0); --Data to display multiplexer (DispMux). This will be shown on 7-seg displ..
 Signal ShapeVal : std_logic_vector(1 downto 0);
 Signal AmplVal,FreqVal : std_logic_vector(7 downto 0);
 
@@ -80,7 +79,6 @@ component DispMux is
            AmplDisp : in  STD_LOGIC_VECTOR (7 downto 0);
            FreqDisp : in  STD_LOGIC_VECTOR (7 downto 0);
 			  OK_cnt : in STD_LOGIC_VECTOR (19 downto 0);
-           --StartPoint : in  STD_LOGIC_VECTOR (19 downto 0);
            DispOut : out  STD_LOGIC_VECTOR (19 downto 0);
            Switch : in  STD_LOGIC);
 end component;
@@ -108,13 +106,11 @@ component SPIHandler is
            SigEn : out  STD_LOGIC);
 end component;
 
-Signal SregIn : std_logic_vector(7 downto 0);
-signal Clk1 : Std_logic;
+Signal SregIn : std_logic_vector(7 downto 0); --Data from shift register getting data via the SPI connection
+signal Clk1 : Std_logic; --One clock output from given module "DivClk" (divided clock). Clock for SevenSeg5 module.
 signal OK_cnt_conn : STD_LOGIC_VECTOR (19 downto 0);
 
 begin
---led <= sregin;
-
 
 U2 : shiftreg port map(Reset => Reset,
 							  SCK => SCK,

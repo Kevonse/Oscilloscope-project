@@ -546,3 +546,4 @@ par -w -intstyle ise -ol high -t 1 SigGenTop_map.ncd SigGenTop.ncd SigGenTop.pcf
 trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml SigGenTop.twx SigGenTop.ncd -o SigGenTop.twr SigGenTop.pcf -ucf siggentop.ucf 
 bitgen -intstyle ise -f SigGenTop.ut SigGenTop.ncd 
 xst -intstyle ise -ifn "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.xst" -ofn "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.syr" 
+xst -intstyle ise -ifn "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.xst" -ofn "C:/Users/Skrum_000/OneDrive/DTU/2. semester/Digitalteknik/Oscilloskop_projekt/SigGenTop.syr" 

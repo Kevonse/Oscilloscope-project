@@ -46,7 +46,7 @@ end DispMux;
 
 architecture Behavioral of DispMux is
 
-signal DispCount: integer range 0 to 4;
+signal DispCount: integer range 0 to 4; --Counter mapped with what data to display on the 7-segment displays.
 
 begin
 
@@ -57,9 +57,9 @@ DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp
 	if Reset = '1' then
 		DispCount <= 0;
 	elsif Mclk'event and Mclk = '1' then
-		If DispCount > 4 then
+		If DispCount > 4 then 
 			DispCount <= 0;
-		elsif Switch = '1' then
+		elsif Switch = '1' then --If button is pressed
 			DispCount <= DispCount +1;
 		else
 			DispCount <= DispCount;
@@ -70,8 +70,7 @@ DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp
 	
 	  case DispCount is
 	    when 0 => 
-			--StartPoint <= x"F0123"; -- Value for StartPoint
-		   DispOut <= x"F0123";        
+		   DispOut <= x"F0123"; --Display: run       
 	    when 1 => 
 			DispOut <= "000001010000000000" & ShapeDisp;
 	    when 2 => 
@@ -79,7 +78,7 @@ DispCountDec: process(Reset, Mclk, Switch,DispCount, ShapeDisp,AmplDisp,FreqDisp
 	    when 3 => 
 			DispOut <= "000011110000" & FreqDisp;
 		 when 4 =>
-			DispOut <= OK_cnt;
+			DispOut <= OK_cnt; --Display number of correctly transferred packages
 		 when others => 
 			DispOut <= x"01234";
      end case;

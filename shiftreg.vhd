@@ -60,13 +60,13 @@ begin
 				shiftval <= "00000000";	
 			elsif Mclk'event and Mclk = '1' then
 				if sclk = "10" then --SCK has just gone low
-					shiftval <=  shiftval(6 downto 0) & MOSI; --Left shift shiftval with bit from master unit
+					shiftval <=  shiftval(6 downto 0) & MOSI; --Left shift current byte with bit from master unit
 				end if;
 			end if;	
 	end process;
 	
 	
-	Byteholder : process(Reset,Mclk)
+	Byteholder : process(Reset,Mclk) --Sets output when SS signal goes high (Data has been transferred)
 		Begin
 			if reset = '1' then 	
 				SPIdat <= x"00";

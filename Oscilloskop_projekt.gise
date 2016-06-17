@@ -247,14 +247,16 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1466088465" xil_pn:in_ck="9184382633549530645" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="-7968052444009085029" xil_pn:start_ts="1466088461">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1466156609" xil_pn:in_ck="9184382633549530645" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="-7968052444009085029" xil_pn:start_ts="1466156596">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="SigGenTop.lso"/>
       <outfile xil_pn:name="SigGenTop.ngc"/>
       <outfile xil_pn:name="SigGenTop.ngr"/>
       <outfile xil_pn:name="SigGenTop.prj"/>
+      <outfile xil_pn:name="SigGenTop.stx"/>
       <outfile xil_pn:name="SigGenTop.syr"/>
       <outfile xil_pn:name="SigGenTop.xst"/>
       <outfile xil_pn:name="SigGenTopTB.prj"/>
@@ -275,7 +277,8 @@
     <transform xil_pn:end_ts="1466083434" xil_pn:in_ck="-2335829174816119024" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="8192462809644973483" xil_pn:start_ts="1466083428">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="SigGenTop.bld"/>
       <outfile xil_pn:name="SigGenTop.ngd"/>
       <outfile xil_pn:name="SigGenTop_ngdbuild.xrpt"/>
@@ -318,6 +321,8 @@
       <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="SigGenTop.ut"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="siggentop.bgn"/>

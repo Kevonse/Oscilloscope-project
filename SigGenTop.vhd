@@ -39,8 +39,7 @@ entity SigGenTop is
            PWMOut : out  STD_LOGIC;
 			  LED : out STD_LOGIC_VECTOR (7 downto 0);
 			  cat :    out std_logic_vector(7 downto 0);  -- Common cathodes
-           an :     out std_logic_vector(3 downto 0); -- Common Anodes
-           MISO : out  STD_LOGIC);
+           an :     out std_logic_vector(3 downto 0)); -- Common Anodes
 end SigGenTop;
 
 architecture Behavioral of SigGenTop is
@@ -60,8 +59,7 @@ component SigGenControl is
            SigEn : out  STD_LOGIC;
 			  cat :  out std_logic_vector(7 downto 0);  -- Common cathodes
 			  an :  out std_logic_vector(3 downto 0); -- Common Anodes
-			  DispSelect : in STD_LOGIC;
-           MISO : out  STD_LOGIC);
+			  DispSelect : in STD_LOGIC);
 end component;
 
 component SigGenDatapath is
@@ -94,8 +92,7 @@ U1 : SigGenControl Port map(Reset => Reset,
 									 LED => LED,
 									 DispSelect => BTN0,
 									 an => an,
-									 cat => cat,
-									 MISO => MISO);
+									 cat => cat);
 
 U3 : SigGenDatapath port map(Reset => Reset,
 									  Clk => Mclk,

@@ -44,31 +44,29 @@ entity SPIHandler is
 end SPIHandler;
 
 architecture Behavioral of SPIHandler is
---Data signal can be either shape, amplitude or frequency before it is loaded to correct register based on adress.
-signal Data, AdrVal, AmplVal, FreqVal, SyncVal, ChecksumVal: std_logic_vector(7 downto 0);--signals holding transmitted bytes - ByteIn,
+--Data signal can be either shape, amplitude or frequency before it is loaded to correct register based on address.
+signal Data, AdrVal, AmplVal, FreqVal, SyncVal, ChecksumVal: std_logic_vector(7 downto 0);--signals holding transmitted bytes.
 signal ChecksumCalc : STD_LOGIC_VECTOR(7 downto 0); --the calculated value of checksum
 signal Package_Ok : STD_LOGIC; --signal indicating if checksum values matched
-signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --Signals for which register to load data into
-signal ShapeVal : Std_logic_vector(1 downto 0); --shape value
-signal SSsample : std_logic_vector(1 downto 0); --Sample of SS signal
+signal SyncEn, DataEn, ShapeEn, AmplEn, FreqEn, ChecksumEn, AdrEn: std_logic; --Signals for which register to current byte into
+signal ShapeVal, SSsample : Std_logic_vector(1 downto 0);
 signal ByteTransfCompl : std_logic; --Signal indicating if byte has been transferred. Must be so if SS has gone high again.
 type StateType is ( Idle, AdrS, DataS, CheckSumEvalS, SyncS);--States indicating current byte to be received
 signal State, nState: StateType; --Current state and next state
 signal Package_loaded : std_logic; --Signal goes high when checksum byte is loaded
-signal Pack_load_sample : std_logic_vector(1 downto 0);
+signal Pack_load_sample : std_logic_vector(1 downto 0); --Is 1 when all four bytes of a package has been loaded into registers
 signal Enable : std_logic; --Signal holding value for output SigEn
---signal OK_cnt : integer range 0 to 65535; --4 hexa digits
-signal OK_pack_cnt : STD_LOGIC_VECTOR(19 downto 0) := X"00000";
+signal OK_pack_cnt : STD_LOGIC_VECTOR(19 downto 0) := X"00000"; --Counter value of correct package transfers
 
 begin
 
-OK_counter : process(Reset, Mclk)
+OK_counter : process(Reset, Mclk) --Counter increments each time checksums match (correct transfer)
 begin
 	if Reset = '1' then
 		OK_pack_cnt <= X"00000";
 	elsif Mclk'event and Mclk = '1' then
 		if Package_Ok = '1' then
-			OK_pack_cnt <= std_logic_vector(unsigned(OK_pack_cnt) + 1);
+			OK_pack_cnt <= std_logic_vector(unsigned(OK_pack_cnt) + 1); --Logic vector -> unsigned int -> logic vector
 		else
 			OK_pack_cnt <= OK_pack_cnt;
 		end if;
@@ -166,7 +164,7 @@ begin
   end if;
 end process;
 
-CheckSumEval: process (Reset, Mclk) --Process evaluation transferred checksum byte against calculated checksum byte
+CheckSumEval: process (Reset, Mclk) --Evaluating transferred checksum byte against calculated checksum byte
 begin
 	if Reset = '1' then 
 		ChecksumCalc <= x"00"; --calculated byte
@@ -180,8 +178,8 @@ begin
 			else
 				Package_Ok <= '0'; --Checksums did not match
 			end if;
-		else
-			Package_Ok <= '0';
+		else --Package has not been loaded
+			Package_Ok <= '0'; --Therefore is not yet OK.
 		end if;
   end if;
 end process;
@@ -204,7 +202,7 @@ begin
   end if;
 end process;
 
-StateDec: process (Reset, State, AdrVal, Package_loaded, ByteTransfCompl, DataIn)--statemachine , 
+StateDec: process (Reset, State, AdrVal, Package_loaded, ByteTransfCompl, DataIn)--statemachine
 begin
 	--Reset load signals
 	SyncEn <= '0';
@@ -242,10 +240,10 @@ begin
 			when CheckSumEvalS => --Expected byte is the checksum
 				if ByteTransfCompl = '1' then --If byte has been transferred run statemachine. SSsample = "01".
 					ChecksumEn <= '1'; --load data into checksumReg
-					nState <= Idle; --Expect new package
+					nState <= Idle; --Go to waiting state
 				end if;
-			when Idle =>
-				Package_loaded <= '1';
+			when Idle => --Idle state handles loaded package
+				Package_loaded <= '1'; --Load Data byte based on address byte
 				nState <= SyncS;
 			when others => --If none of the states applied
 				nState <= SyncS; --Set state to expect new package
@@ -253,7 +251,7 @@ begin
 	end if;
 end process;
 
-AdrDec: process (Reset, Data, AdrVal, Package_Ok)--statemachine
+AdrDec: process (Reset, Data, AdrVal, Package_Ok)--Loads data byte into correct register based on address byte.
 begin
 	ShapeEn <= '0';
 	AmplEn <= '0';
@@ -281,7 +279,7 @@ end process;
 		SigEn <= Enable;
 		OK_cnt <= OK_pack_cnt;
 		
-		LED <= FreqVal;
+		LED <= FreqVal; --Optional. Turns on LED's based on this value. Takes 8 bits.
 
 		
 end Behavioral;
